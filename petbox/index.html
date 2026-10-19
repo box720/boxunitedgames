@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Petbox - Cozy Pixel Pet Garden</title>
+<meta name="description" content="Petbox: hatch, raise and race tiny pixel pets in cozy gardens that grow with you. By Box United.">
+<link rel="icon" href="img/icon.png">
+<link rel="canonical" href="https://boxunitedgames.com/petbox/">
+<link rel="alternate" hreflang="en" href="https://boxunitedgames.com/petbox/">
+<link rel="alternate" hreflang="es" href="https://boxunitedgames.com/petbox/es/">
+<link rel="alternate" hreflang="pt-BR" href="https://boxunitedgames.com/petbox/pt-br/">
+<link rel="alternate" hreflang="x-default" href="https://boxunitedgames.com/petbox/">
+<style>
+  :root { --bg: #f3efe6; --panel: #ffffff; --ink: #2f2540; --muted: #6b6280; --wood: #b07a45; --pink: #e8457f; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #1a1610; --panel: #241f18; --ink: #f2ece2; --muted: #b3a894; --wood: #d39a5e; --pink: #ff6f9f; } }
+  * { box-sizing: border-box }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 32px max(16px, env(safe-area-inset-left)) 48px }
+  header { display: flex; gap: 20px; align-items: center; flex-wrap: wrap }
+  header img { width: 96px; height: 96px; image-rendering: pixelated; border-radius: 22px }
+  h1 { margin: 0; font-size: clamp(32px, 6vw, 48px); line-height: 1.1 }
+  .tag { color: var(--muted); margin: 6px 0 0 }
+  .feature { width: 100%; border-radius: 12px; margin: 28px 0; image-rendering: pixelated; display: block }
+  .shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px }
+  .shots img { width: 100%; border-radius: 8px; image-rendering: pixelated; display: block }
+  ul { padding-left: 20px }
+  .note { background: var(--panel); border-radius: 10px; padding: 14px 18px; margin-top: 24px }
+  footer { margin-top: 36px; color: var(--muted); font-size: 14px; display: flex; gap: 18px; flex-wrap: wrap }
+  a { color: var(--pink) }
+  .lang { text-align: right; font-size: 14px; margin: 0 0 12px }
+  .lang a { color: var(--ink) }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="lang" aria-label="Language"><strong>English</strong> · <a href="es/" hreflang="es" lang="es">Español</a> · <a href="pt-br/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></nav>
+  <header>
+    <img src="img/icon.png" alt="Petbox app icon: Hazel the toymaker mole in a toy box">
+    <div>
+      <h1>Petbox</h1>
+      <p class="tag">A cozy pixel pet garden by Box United. Coming soon to Google Play.</p>
+    </div>
+  </header>
+
+  <img class="feature" src="img/feature.png" alt="Petbox logo with Hazel and a group of pixel pets in a garden">
+
+  <p>Hatch, raise and race tiny pixel pets in cozy gardens that grow with you.</p>
+  <ul>
+    <li>Four species, seven hybrids, rare Mystic looks and divine forms</li>
+    <li>Five gardens with real-calendar seasons and holidays</li>
+    <li>Races, dojo training, mini-games and weekend festivals</li>
+    <li>Friend codes, a Friendship Plaza and local Wi-Fi play together</li>
+    <li>Hazel's Workshop for statues, recolors and garden expansions</li>
+  </ul>
+
+  <div class="shots">
+    <img src="img/01_cozy_oasis.png" alt="Cozy Oasis garden with pets and the Glimmer Tree">
+    <img src="img/02_divine.png" alt="Divine forms and Mystic pets in Moon Hollow">
+    <img src="img/04_cloud_isle.png" alt="Cloud Isle floating garden in spring">
+    <img src="img/07_hybrids.png" alt="All seven hybrid pets in Sunny Glade">
+  </div>
+
+  <div class="note">No ads. No accounts. No data collection. Your garden stays on your device.</div>
+
+  <footer>
+    <a href="privacy/">Privacy policy</a>
+    <span>Contact: <a href="mailto:support@boxunitedgames.com">support@boxunitedgames.com</a></span>
+    <span>&copy; 2026 <a href="../">Box United</a></span>
+  </footer>
+</div>
+</body>
+</html>

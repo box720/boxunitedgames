@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Box United - Cozy little games</title>
+<meta name="description" content="Box United is a tiny game studio making cozy little games with care. Our first game, Petbox, is a pixel pet garden coming soon to Google Play.">
+<link rel="canonical" href="https://boxunitedgames.com/">
+<link rel="icon" href="img/box.svg" type="image/svg+xml">
+<link rel="icon" href="img/box-180.png" type="image/png">
+<link rel="apple-touch-icon" href="img/box-180.png">
+<style>
+  :root { --bg: #f3efe6; --panel: #ffffff; --ink: #2f2540; --muted: #6b6280; --link: #c2185b;
+          --edge: #2f2540; --shadow: #2f2540; --wood: #c98d52; --wood-hi: #e8b77d; --wood-lo: #8f5f33;
+          --pink: #e8457f; --blush: #ffd1e0; --badge-bg: #f6e3c8; --badge-ink: #6b4423; --grass: #7fbf6a; --grass-lo: #5a9e4b; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #1a1610; --panel: #241f18; --ink: #f2ece2; --muted: #b3a894; --link: #ff8fb5;
+            --edge: #5a4d3c; --shadow: #000000; --wood: #d39a5e; --wood-hi: #f0c48c; --wood-lo: #9c6a3b;
+            --pink: #ff6f9f; --blush: #ffd1e0; --badge-bg: #3a2f22; --badge-ink: #f0c48c; --grass: #4f7f44; --grass-lo: #3b6334; }
+  }
+  * { box-sizing: border-box }
+  html { background: var(--bg) }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 40px 16px 32px }
+  a { color: var(--link) }
+  header { display: flex; gap: 20px; align-items: center; flex-wrap: wrap }
+  header > div { flex: 1 1 200px; min-width: 0 }
+  .logo { width: 96px; height: 96px; flex: none }
+  .logo .k { fill: var(--ink) } .logo .w { fill: var(--wood) } .logo .l { fill: var(--wood-hi) }
+  .logo .d { fill: var(--wood-lo) } .logo .p { fill: var(--pink) } .logo .h { fill: var(--blush) }
+  h1 { margin: 0; font-size: clamp(34px, 7vw, 52px); line-height: 1.05; letter-spacing: -0.5px }
+  .tag { margin: 6px 0 0; color: var(--muted); font-size: 1.1em }
+  h2 { margin: 40px 0 14px; font-size: 1em; text-transform: uppercase; letter-spacing: 2px; color: var(--muted) }
+  .card { display: flex; gap: 18px; align-items: center; padding: 18px; background: var(--panel); color: var(--ink);
+          text-decoration: none; border: 3px solid var(--edge); box-shadow: 6px 6px 0 var(--shadow);
+          transition: transform .12s, box-shadow .12s }
+  .card:hover, .card:focus-visible { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--shadow) }
+  .card:focus-visible { outline: 3px solid var(--pink); outline-offset: 4px }
+  .card img { width: 88px; height: 88px; flex: none; image-rendering: pixelated; border-radius: 20px }
+  .card h3 { margin: 0; font-size: 1.5em; line-height: 1.2 }
+  .card p { margin: 4px 0 10px }
+  .badge { display: inline-block; padding: 2px 10px; font-size: 0.85em; font-weight: 600;
+           background: var(--badge-bg); color: var(--badge-ink); border: 2px solid var(--edge) }
+  .row { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center }
+  .more { color: var(--link); font-weight: 600; white-space: nowrap }
+  .hello { padding: 16px 18px; background: var(--panel); border: 2px dashed var(--pink) }
+  .hello p { margin: 0 }
+  .grass { height: 12px; margin: 48px 0 0; background:
+           linear-gradient(var(--grass), var(--grass)) 0 4px / 100% 8px no-repeat,
+           repeating-linear-gradient(90deg, var(--grass-lo) 0 4px, transparent 4px 12px, var(--grass) 12px 16px, transparent 16px 24px) 0 0 / 100% 4px no-repeat }
+  footer { margin-top: 14px; color: var(--muted); font-size: 0.9em; display: flex; gap: 8px 18px; flex-wrap: wrap }
+  footer a { color: inherit }
+  @media (max-width: 480px) { .card { flex-direction: column; align-items: flex-start } }
+  @media (prefers-reduced-motion: reduce) { .card { transition: none } .card:hover { transform: none } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <svg class="logo" viewBox="0 0 16 16" width="96" height="96" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect class="p" x="5" y="2" width="2" height="1"/><rect class="p" x="9" y="2" width="2" height="1"/><rect class="p" x="4" y="3" width="1" height="1"/><rect class="h" x="5" y="3" width="1" height="1"/><rect class="p" x="6" y="3" width="6" height="1"/><rect class="p" x="4" y="4" width="8" height="1"/><rect class="k" x="1" y="5" width="2" height="1"/><rect class="p" x="5" y="5" width="6" height="1"/><rect class="k" x="13" y="5" width="2" height="1"/><rect class="k" x="1" y="6" width="1" height="1"/><rect class="w" x="2" y="6" width="1" height="1"/><rect class="k" x="3" y="6" width="1" height="1"/><rect class="p" x="6" y="6" width="4" height="1"/><rect class="k" x="12" y="6" width="1" height="1"/><rect class="w" x="13" y="6" width="1" height="1"/><rect class="k" x="14" y="6" width="1" height="1"/><rect class="k" x="2" y="7" width="1" height="1"/><rect class="w" x="3" y="7" width="1" height="1"/><rect class="k" x="4" y="7" width="1" height="1"/><rect class="p" x="7" y="7" width="2" height="1"/><rect class="k" x="11" y="7" width="1" height="1"/><rect class="w" x="12" y="7" width="1" height="1"/><rect class="k" x="13" y="7" width="1" height="1"/><rect class="k" x="2" y="8" width="12" height="1"/><rect class="k" x="2" y="9" width="1" height="1"/><rect class="l" x="3" y="9" width="10" height="1"/><rect class="k" x="13" y="9" width="1" height="1"/><rect class="k" x="2" y="10" width="1" height="1"/><rect class="w" x="3" y="10" width="10" height="1"/><rect class="k" x="13" y="10" width="1" height="1"/><rect class="k" x="2" y="11" width="1" height="1"/><rect class="w" x="3" y="11" width="4" height="1"/><rect class="k" x="7" y="11" width="2" height="1"/><rect class="w" x="9" y="11" width="4" height="1"/><rect class="k" x="13" y="11" width="1" height="1"/><rect class="k" x="2" y="12" width="1" height="1"/><rect class="w" x="3" y="12" width="10" height="1"/><rect class="k" x="13" y="12" width="1" height="1"/><rect class="k" x="2" y="13" width="1" height="1"/><rect class="w" x="3" y="13" width="10" height="1"/><rect class="k" x="13" y="13" width="1" height="1"/><rect class="k" x="2" y="14" width="1" height="1"/><rect class="d" x="3" y="14" width="10" height="1"/><rect class="k" x="13" y="14" width="1" height="1"/><rect class="k" x="2" y="15" width="12" height="1"/></svg>
+    <div>
+      <h1>Box United</h1>
+      <p class="tag">Cozy little games made with care.</p>
+    </div>
+  </header>
+
+  <h2>Our games</h2>
+  <a class="card" href="petbox/">
+    <img src="petbox/img/icon.png" alt="Petbox app icon: Hazel the toymaker mole in a toy box" width="88" height="88">
+    <div>
+      <h3>Petbox</h3>
+      <p>Hatch, raise and race tiny pixel pets in cozy gardens that grow with you.</p>
+      <div class="row"><span class="badge">Coming soon to Google Play</span> <span class="more">Visit Petbox &rarr;</span></div>
+    </div>
+  </a>
+
+  <h2>Say hello</h2>
+  <div class="hello">
+    <p>Questions, ideas or a kind word? Write to us at
+      <a href="mailto:support@boxunitedgames.com">support@boxunitedgames.com</a></p>
+  </div>
+
+  <div class="grass" aria-hidden="true"></div>
+  <footer>
+    <span>&copy; 2026 Box United</span>
+    <a href="privacy/">Privacy</a>
+    <span>No cookies, no trackers.</span>
+  </footer>
+</div>
+</body>
+</html>

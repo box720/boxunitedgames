@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Petbox - Jardín de mascotas pixeladas</title>
+<meta name="description" content="Petbox: haz nacer, cuida y haz correr mascotas pixeladas en jardines acogedores que crecen contigo. De Box United.">
+<link rel="icon" href="../img/icon.png">
+<link rel="canonical" href="https://boxunitedgames.com/petbox/es/">
+<link rel="alternate" hreflang="en" href="https://boxunitedgames.com/petbox/">
+<link rel="alternate" hreflang="es" href="https://boxunitedgames.com/petbox/es/">
+<link rel="alternate" hreflang="pt-BR" href="https://boxunitedgames.com/petbox/pt-br/">
+<link rel="alternate" hreflang="x-default" href="https://boxunitedgames.com/petbox/">
+<style>
+  :root { --bg: #f3efe6; --panel: #ffffff; --ink: #2f2540; --muted: #6b6280; --wood: #b07a45; --pink: #e8457f; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #1a1610; --panel: #241f18; --ink: #f2ece2; --muted: #b3a894; --wood: #d39a5e; --pink: #ff6f9f; } }
+  * { box-sizing: border-box }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 32px max(16px, env(safe-area-inset-left)) 48px }
+  header { display: flex; gap: 20px; align-items: center; flex-wrap: wrap }
+  header img { width: 96px; height: 96px; image-rendering: pixelated; border-radius: 22px }
+  h1 { margin: 0; font-size: clamp(32px, 6vw, 48px); line-height: 1.1 }
+  .tag { color: var(--muted); margin: 6px 0 0 }
+  .feature { width: 100%; border-radius: 12px; margin: 28px 0; image-rendering: pixelated; display: block }
+  .shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px }
+  .shots img { width: 100%; border-radius: 8px; image-rendering: pixelated; display: block }
+  ul { padding-left: 20px }
+  .note { background: var(--panel); border-radius: 10px; padding: 14px 18px; margin-top: 24px }
+  footer { margin-top: 36px; color: var(--muted); font-size: 14px; display: flex; gap: 18px; flex-wrap: wrap }
+  a { color: var(--pink) }
+  .lang { text-align: right; font-size: 14px; margin: 0 0 12px }
+  .lang a { color: var(--ink) }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="lang" aria-label="Idioma"><a href="../" hreflang="en" lang="en">English</a> · <strong>Español</strong> · <a href="../pt-br/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></nav>
+  <header>
+    <img src="../img/icon.png" alt="Ícono de Petbox: Hazel, la topa juguetera, en una caja de juguetes">
+    <div>
+      <h1>Petbox</h1>
+      <p class="tag">Un jardín de mascotas pixeladas, tranquilo y acogedor, de Box United. Muy pronto en Google Play.</p>
+    </div>
+  </header>
+
+  <img class="feature" src="img/feature.png" alt="Logo de Petbox con Hazel y un grupo de mascotas pixeladas en un jardín">
+
+  <p>Haz nacer, cuida y haz correr pequeñas mascotas pixeladas en jardines acogedores que crecen contigo.</p>
+  <ul>
+    <li>Cuatro especies, siete híbridos, raros aspectos Místicos y formas divinas</li>
+    <li>Cinco jardines con las estaciones y fiestas del calendario real</li>
+    <li>Carreras, entrenamiento en el Dojo, minijuegos y festivales de fin de semana</li>
+    <li>Códigos de amigos, la Plaza de la Amistad y Jugar Juntos por Wi-Fi local</li>
+    <li>El Taller de Hazel: estatuas, nuevos colores y jardines más grandes</li>
+  </ul>
+
+  <div class="shots">
+    <img src="img/01_cozy_oasis.png" alt="El Oasis Acogedor con mascotas y el Árbol Glimmer">
+    <img src="img/02_divine.png" alt="Formas divinas y mascotas Místicas en el Valle Lunar">
+    <img src="img/04_cloud_isle.png" alt="La Isla Nube, un jardín flotante en primavera">
+    <img src="img/07_hybrids.png" alt="Los siete híbridos en el Claro Soleado">
+  </div>
+
+  <div class="note">Sin anuncios. Sin cuentas. Sin recopilación de datos. Tu jardín se queda en tu dispositivo.</div>
+
+  <footer>
+    <a href="../privacy/es/">Política de privacidad</a>
+    <span>Contacto: <a href="mailto:support@boxunitedgames.com">support@boxunitedgames.com</a></span>
+    <span>&copy; 2026 <a href="../../">Box United</a></span>
+  </footer>
+</div>
+</body>
+</html>
