@@ -1,10 +1,11 @@
-# Box United website
+# boxunitedgames.com
 
-Source of https://boxunitedgames.com (GitHub Pages, branch `main`, folder `/`).
+The website of Box United, a small studio making cozy little games for kids and families.
+Plain static pages served by GitHub Pages: no cookies, no trackers, nothing loaded from other sites.
 
-- `/` studio home
-- `/petbox/` Petbox landing page (+ `es/`, `pt-br/`)
-- `/petbox/privacy/` Petbox privacy policy (+ `es/`, `pt-br/`)
-- `/privacy/` links to each game's privacy policy
+- Studio: https://boxunitedgames.com/
+- Petbox: https://boxunitedgames.com/petbox/
+- Press kit: https://boxunitedgames.com/press/
+- Privacy: https://boxunitedgames.com/privacy/
 
-Website files only. Contact: support@boxunitedgames.com
+Contact: support@boxunitedgames.com

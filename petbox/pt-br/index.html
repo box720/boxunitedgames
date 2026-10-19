@@ -1,73 +1,214 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-game="petbox">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Petbox - Jardim de pets em pixel</title>
-<meta name="description" content="Petbox: choque, cuide e corra com pets em pixel em jardins aconchegantes que crescem com você. Da Box United.">
-<link rel="icon" href="../img/icon.png">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self'; media-src 'self'; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#6fc3f0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1d2a52" media="(prefers-color-scheme: dark)">
+<title>Petbox: um jardim de pets em pixel | Box United</title>
+<meta name="description" content="Choque, cuide e corra com pets em pixel em cinco jardins aconchegantes. Sem anúncios, sem contas, sem coleta de dados. Em breve no Google Play.">
 <link rel="canonical" href="https://boxunitedgames.com/petbox/pt-br/">
 <link rel="alternate" hreflang="en" href="https://boxunitedgames.com/petbox/">
 <link rel="alternate" hreflang="es" href="https://boxunitedgames.com/petbox/es/">
 <link rel="alternate" hreflang="pt-BR" href="https://boxunitedgames.com/petbox/pt-br/">
 <link rel="alternate" hreflang="x-default" href="https://boxunitedgames.com/petbox/">
-<style>
-  :root { --bg: #f3efe6; --panel: #ffffff; --ink: #2f2540; --muted: #6b6280; --wood: #b07a45; --pink: #e8457f; }
-  @media (prefers-color-scheme: dark) { :root { --bg: #1a1610; --panel: #241f18; --ink: #f2ece2; --muted: #b3a894; --wood: #d39a5e; --pink: #ff6f9f; } }
-  * { box-sizing: border-box }
-  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif }
-  .wrap { max-width: 980px; margin: 0 auto; padding: 32px max(16px, env(safe-area-inset-left)) 48px }
-  header { display: flex; gap: 20px; align-items: center; flex-wrap: wrap }
-  header img { width: 96px; height: 96px; image-rendering: pixelated; border-radius: 22px }
-  h1 { margin: 0; font-size: clamp(32px, 6vw, 48px); line-height: 1.1 }
-  .tag { color: var(--muted); margin: 6px 0 0 }
-  .feature { width: 100%; border-radius: 12px; margin: 28px 0; image-rendering: pixelated; display: block }
-  .shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px }
-  .shots img { width: 100%; border-radius: 8px; image-rendering: pixelated; display: block }
-  ul { padding-left: 20px }
-  .note { background: var(--panel); border-radius: 10px; padding: 14px 18px; margin-top: 24px }
-  footer { margin-top: 36px; color: var(--muted); font-size: 14px; display: flex; gap: 18px; flex-wrap: wrap }
-  a { color: var(--pink) }
-  .lang { text-align: right; font-size: 14px; margin: 0 0 12px }
-  .lang a { color: var(--ink) }
-</style>
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/brand/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Box United">
+<meta property="og:title" content="Petbox: um jardim aconchegante de pets em pixel">
+<meta property="og:description" content="Choque, cuide e corra com pets em pixel em cinco jardins aconchegantes. Sem anúncios, sem contas, sem coleta de dados. Em breve no Google Play.">
+<meta property="og:url" content="https://boxunitedgames.com/petbox/pt-br/">
+<meta property="og:image" content="https://boxunitedgames.com/petbox/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="O logo do Petbox, uma caixa de brinquedos de madeira com a Hazel, a toupeira que faz brinquedos, espiando, e quatro pets em pixel na grama">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="es_LA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Petbox: um jardim aconchegante de pets em pixel">
+<meta name="twitter:description" content="Choque, cuide e corra com pets em pixel em cinco jardins aconchegantes. Sem anúncios, sem contas, sem coleta de dados. Em breve no Google Play.">
+<meta name="twitter:image" content="https://boxunitedgames.com/petbox/img/og.png">
+<meta name="twitter:image:alt" content="O logo do Petbox, uma caixa de brinquedos de madeira com a Hazel, a toupeira que faz brinquedos, espiando, e quatro pets em pixel na grama">
+<link rel="preload" href="/assets/fonts/box-pixel-v1.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/brand.css">
+<link rel="stylesheet" href="/assets/css/themes/petbox.css">
+<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/assets/css/game.css">
+<script src="/assets/js/sprites.js" defer></script>
+<script src="/assets/sprites/petbox/index.js" defer></script>
+<script src="/assets/js/site.js" defer></script>
+<script src="/assets/js/game.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"Petbox","url":"https://boxunitedgames.com/petbox/pt-br/","description":"Choque, cuide e corra com pets em pixel em cinco jardins aconchegantes. Sem anúncios, sem contas, sem coleta de dados. Em breve no Google Play.","image":"https://boxunitedgames.com/petbox/img/og.png","genre":["Pet virtual","Simulação","Casual"],"gamePlatform":"Android","applicationCategory":"Game","operatingSystem":"Android","inLanguage":["en","es","pt-BR"],"author":{"@type":"Organization","name":"Box United","url":"https://boxunitedgames.com/"},"publisher":{"@type":"Organization","name":"Box United","url":"https://boxunitedgames.com/"},"trailer":{"@type":"VideoObject","name":"Trailer do Petbox","description":"Um ovo choca, os pets brincam no balanço e na gangorra, os jardins mudam com as estações e os feriados, e um velho amigo refloresce numa forma Divina.","thumbnailUrl":"https://boxunitedgames.com/petbox/media/petbox-cozy-v1.png","contentUrl":"https://boxunitedgames.com/petbox/media/petbox-cozy-v1.mp4","uploadDate":"2026-10-19","duration":"PT36S"}}</script>
 </head>
 <body>
-<div class="wrap">
-  <nav class="lang" aria-label="Idioma"><a href="../" hreflang="en" lang="en">English</a> · <a href="../es/" hreflang="es" lang="es">Español</a> · <strong>Português (Brasil)</strong></nav>
-  <header>
-    <img src="../img/icon.png" alt="Ícone do Petbox: Hazel, a toupeira que faz brinquedos, numa caixa de brinquedos">
-    <div>
-      <h1>Petbox</h1>
-      <p class="tag">Um jardim de pets em pixel, tranquilo e aconchegante, da Box United. Em breve no Google Play.</p>
+<a class="skip" href="#main">Pular para o conteúdo</a>
+<header class="site-head"><div class="site-head__in">
+  <a class="brand" href="/"><img src="/assets/brand/logo.svg" alt="" width="32" height="32"><span>Box United</span></a>
+  <nav class="site-nav" aria-label="Principal"><a href="/#games">Jogos</a><a href="/#about">Sobre</a><a href="/press/">Imprensa</a><a href="/#contact">Contato</a></nav>
+</div></header>
+<main id="main" style="--still:url(/petbox/img/cast-still-6b89a0ae.png);--sw:203;--sh:39">
+<section class="gp-hero" aria-labelledby="gp-title">
+  <div class="wrap gp-hero__in">
+    <nav class="gp-langs" aria-label="Idioma"><a href="/petbox/" hreflang="en" lang="en">English</a><a href="/petbox/es/" hreflang="es" lang="es">Español</a><a href="/petbox/pt-br/" hreflang="pt-BR" lang="pt-BR" aria-current="page">Português</a></nav>
+    <h1 id="gp-title" class="gp-logo"><img src="/petbox/img/logo.png" width="272" height="122" alt="Petbox"></h1>
+    <p class="gp-hero__tag">Choque, cuide e corra com pets em pixel em jardins aconchegantes que crescem com você.</p>
+    <div class="gp-hero__actions">
+      <a class="btn btn--primary gp-cta" href="#trailer" data-play="trailer"><svg viewBox="0 0 8 8" width="16" height="16" aria-hidden="true" focusable="false"><path d="M2 1h1v1h1v1h1v1h1v1H5v1H4v1H3v1H2z"/></svg><span>Veja o trailer</span></a>
+      <p class="gp-soon">Em breve no Google Play · Android</p>
     </div>
-  </header>
-
-  <img class="feature" src="img/feature.png" alt="Logo do Petbox com a Hazel e um grupo de pets em pixel num jardim">
-
-  <p>Choque, cuide e corra com pequenos pets em pixel em jardins aconchegantes que crescem com você.</p>
-  <ul>
-    <li>Quatro espécies, sete híbridos, raros visuais Místicos e formas divinas</li>
-    <li>Cinco jardins com as estações e feriados do calendário real</li>
-    <li>Corridas, treino no Dojo, minigames e festivais de fim de semana</li>
-    <li>Códigos de amigos, a Praça da Amizade e o Jogar Juntos pelo Wi-Fi local</li>
-    <li>A Oficina da Hazel: estátuas, novas cores e jardins maiores</li>
-  </ul>
-
-  <div class="shots">
-    <img src="img/01_cozy_oasis.png" alt="O Oásis Aconchegante com pets e a Árvore Glimmer">
-    <img src="img/02_divine.png" alt="Formas divinas e pets Místicos no Vale da Lua">
-    <img src="img/04_cloud_isle.png" alt="A Ilha Nuvem, um jardim flutuante na primavera">
-    <img src="img/07_hybrids.png" alt="Os sete híbridos na Clareira do Sol">
+    <p class="gp-hero__facts">Sem anúncios · Sem contas · Funciona offline</p>
   </div>
+  <div class="gp-yard">
+    <div class="gp-yard__cast" aria-hidden="true">
+      <span class="gp-pet" style="--w:25;--h:37;--ay:35;--fx:0;--gap:0"><canvas class="sprite" data-sprite="petbox/glimmling" data-seq="idle,wave,idle*2,hop" data-tap="hop" data-offset="900" width="25" height="37" aria-hidden="true"></canvas></span>
+      <span class="gp-pet gp-pet--flip" style="--w:26;--h:30;--ay:28;--fx:26;--gap:-3"><canvas class="sprite" data-sprite="petbox/puffling" data-seq="idle,hop,idle*2,wave" data-tap="hop" data-offset="2600" data-flip width="26" height="30" aria-hidden="true"></canvas></span>
+      <span class="gp-pet gp-pet--wide" style="--w:37;--h:31;--ay:27;--fx:53;--gap:40"><canvas class="sprite" data-sprite="petbox/hazel" data-seq="idle*2,wave,idle*3,cheer" data-tap="cheer" width="37" height="31" aria-hidden="true"></canvas></span>
+      <span class="gp-pet gp-pet--wide" style="--w:47;--h:39;--ay:29;--fx:91;--gap:-10"><canvas class="sprite" data-sprite="petbox/egg" data-anim="wobble" data-tap="wobble" width="47" height="39" aria-hidden="true"></canvas></span>
+      <span class="gp-pet" style="--w:35;--h:35;--ay:31;--fx:139;--gap:36"><canvas class="sprite" data-sprite="petbox/drakelet" data-seq="idle*2,hop,idle,cheer" data-tap="hop" data-offset="2300" width="35" height="35" aria-hidden="true"></canvas></span>
+      <span class="gp-pet gp-pet--flip" style="--w:28;--h:30;--ay:27;--fx:175;--gap:-2"><canvas class="sprite" data-sprite="petbox/gillby" data-seq="idle*2,wave,idle,hop" data-tap="hop" data-offset="400" data-flip width="28" height="30" aria-hidden="true"></canvas></span>
+    </div>
+    <div class="gp-yard__soil"><div class="wrap gp-yard__in">
+      <p class="gp-yard__hint" hidden>Toque num pet para dar oi.</p>
+      <button class="gp-motion" type="button" aria-pressed="false" hidden><svg class="ic-pause" viewBox="0 0 4 4" aria-hidden="true" focusable="false"><path d="M0 0h1v4H0zM3 0h1v4H3z"/></svg><svg class="ic-play" viewBox="0 0 4 4" aria-hidden="true" focusable="false"><path d="M0 0h1v1h1v1h1v1H2v1H1V4H0z"/></svg><span class="sr-only">Pausar os pets</span></button>
+    </div></div>
+  </div>
+</section>
+<section class="gp-trailer" id="trailer" aria-labelledby="trailer-h">
+  <div class="wrap gp-trailer__in">
+    <h2 id="trailer-h" class="sr-only">Trailer do Petbox</h2>
+    <figure class="gp-trailer__fig">
+      <div class="gp-video pixel-frame"><video id="gp-trailer-video" controls muted playsinline preload="none" width="1280" height="720" poster="/petbox/media/petbox-cozy-v1.png" aria-describedby="gp-trailer-cap"><source src="/petbox/media/petbox-cozy-v1.mp4" type="video/mp4"></video><button class="gp-video__play" type="button" data-video="gp-trailer-video" hidden><svg viewBox="0 0 8 8" width="32" height="32" aria-hidden="true" focusable="false"><path d="M2 1h1v1h1v1h1v1h1v1H5v1H4v1H3v1H2z"/></svg><span class="sr-only">Assistir ao trailer</span></button></div>
+      <figcaption id="gp-trailer-cap" class="gp-cap"><strong>Trailer, 36 segundos:</strong> um ovo choca, os pets brincam no balanço e na gangorra, os jardins mudam com as estações e um velho amigo refloresce numa forma Divina. O trailer está em inglês e começa sem som; ligue o som no player para ouvir a música. <a href="/petbox/media/petbox-cozy-v1.mp4" download>Baixar (MP4, 2.0 MB)</a></figcaption>
+    </figure>
+  </div>
+</section>
 
-  <div class="note">Sem anúncios. Sem contas. Sem coleta de dados. Seu jardim fica no seu aparelho.</div>
+<section class="section gp-feature" id="raise" aria-labelledby="raise-h" data-reveal>
+  <div class="wrap gp-feature__in">
+    <div class="gp-feature__text">
+      <h2 id="raise-h">Um novo amigo</h2>
+      <div class="gp-prose">
+        <p>Choque um Glimmling, um Drakelet, um Puffling ou um Gillby, dê um nome e faça ele se sentir em casa. Faça carinho na cabeça, balance as árvores para colher frutas e veja a personalidade aparecer: uns brincam no balanço e tiram soneca, outros chutam a bola, nadam no lago ou tostam marshmallows na fogueira. Cuide bem dos seus pets e eles vão te cumprimentar, aprender truques e fazer melhores amigos.</p>
+        <h3>Seu cuidado define quem eles vão ser</h3>
+        <p>Gentileza deixa um pet Solar; um pouco de travessura deixa ele Lunar. O Melão Mar aumenta o Nado, a Baga Céu o Voo, a Pimenta Veloz a Rapidez e a Noz Pedra a Força. Quando um pet cresce, ele se enrola num casulo de sementes e floresce numa nova forma escolhida pelos atributos e pela personalidade. Crie com muito amor e ele pode virar Radiante.</p>
+        <h3>Híbridos, Místicos e Divinos</h3>
+        <p>Junte duas espécies diferentes para chocar um dos sete híbridos, do Glimwyrm com chifres ao borbulhante Bubblepuff. Ovos da sorte chocam cinco linhagens Místicas brilhantes. Quando um velho amigo viveu uma vida plena, ele visita a Árvore Glimmer e refloresce como um novo ovo que guarda o nome e as memórias. Um pet Radiante muito amado da quarta geração pode até alcançar uma forma Divina.</p>
+        <h3>Uma novidade todo dia</h3>
+        <p>O Pip, seu guia do jardim, conta o que seus pets aprontaram enquanto você estava fora, e as missões diárias, os desejos dos pets, as cartas na caixa postal, as festas de aniversário e a Creche da Vovó Amora dão a cada visita algo para esperar.</p>
+      </div>
+    </div>
+    <figure class="gp-media"><div class="pixel-frame gp-media__frame"><img class="gp-art" src="/petbox/img/shots/pt-br/02-divine.png" width="640" height="360" alt="O Vale da Lua à noite com as quatro formas Divinas e pets Místicos brilhando" loading="lazy" decoding="async"></div><figcaption class="gp-cap">Pets Divinos e Místicos no Vale da Lua</figcaption></figure>
+    <div class="gp-kinds"><h3 class="gp-kinds__title">Conheça as quatro espécies</h3><ul class="gp-kinds__list"><li class="gp-kind"><div class="gp-kind__pet" aria-hidden="true"><span class="gp-pet" style="--w:25;--h:37;--ay:35;--fx:0"><canvas class="sprite" data-sprite="petbox/glimmling" data-anim="idle" data-tap="hop" width="25" height="37" aria-hidden="true"></canvas></span></div><h4>Glimmling</h4><p>Nasce de um Ovo Glim e tem um brotinho na cabeça.</p></li><li class="gp-kind"><div class="gp-kind__pet" aria-hidden="true"><span class="gp-pet" style="--w:35;--h:35;--ay:31;--fx:139"><canvas class="sprite" data-sprite="petbox/drakelet" data-anim="idle" data-tap="hop" width="35" height="35" aria-hidden="true"></canvas></span></div><h4>Drakelet</h4><p>Um dragãozinho que nasce de um Ovo Drake, com uma chaminha na cauda.</p></li><li class="gp-kind"><div class="gp-kind__pet" aria-hidden="true"><span class="gp-pet" style="--w:26;--h:30;--ay:28;--fx:26"><canvas class="sprite" data-sprite="petbox/puffling" data-anim="idle" data-tap="hop" width="26" height="30" aria-hidden="true"></canvas></span></div><h4>Puffling</h4><p>Nasce de um Ovo Nuvem. Ele flutua e adora a Ilha Nuvem.</p></li><li class="gp-kind"><div class="gp-kind__pet" aria-hidden="true"><span class="gp-pet" style="--w:28;--h:30;--ay:27;--fx:175"><canvas class="sprite" data-sprite="petbox/gillby" data-anim="idle" data-tap="hop" width="28" height="30" aria-hidden="true"></canvas></span></div><h4>Gillby</h4><p>Nasce de um Ovo Bolha. Adora água, e sua casa é o Recife de Coral.</p></li></ul><p class="gp-kinds__note">Cada espécie tem 29 formas para descobrir no seu Diário de Campo. Toque num pet para ele pular.</p></div>
+  </div>
+</section>
 
-  <footer>
-    <a href="../privacy/pt-br/">Política de privacidade</a>
-    <span>Contato: <a href="mailto:support@boxunitedgames.com">support@boxunitedgames.com</a></span>
-    <span>&copy; 2026 <a href="../../">Box United</a></span>
-  </footer>
-</div>
+<section class="section gp-feature gp-feature--wide" id="gardens" aria-labelledby="gardens-h" data-reveal>
+  <div class="wrap gp-feature__in">
+    <div class="gp-feature__text">
+      <h2 id="gardens-h">Cinco jardins aconchegantes</h2>
+      <div class="gp-prose">
+        <p>Comece no Oásis Aconchegante e depois abra a quentinha Clareira do Sol, o Vale da Lua iluminado por lanternas, a Ilha Nuvem flutuante e o Recife de Coral no fundo do mar, cada um com suas árvores, frutas e músicas. O dia vira noite com o seu relógio e o clima muda. As estações de verdade trazem flores na primavera, folhas no outono e neve no inverno, e os feriados trazem ovos especiais como o Pumpkling e o Frostling.</p>
+      </div>
+    </div>
+    <ul class="gp-tiles"><li class="gp-tile"><img class="gp-art" src="/petbox/img/gardens/cozy-oasis.png" width="320" height="180" alt="O Oásis Aconchegante no outono: um Glimmling sob a dourada Árvore Glimmer e um Gillby no lago" loading="lazy" decoding="async"><h3>Oásis Aconchegante</h3><p>Onde toda história do jardim começa.</p></li><li class="gp-tile"><img class="gp-art" src="/petbox/img/gardens/sunny-glade.png" width="320" height="180" alt="A Clareira do Sol no verão: pets híbridos em volta de um lago redondo sobre pedras quentinhas" loading="lazy" decoding="async"><h3>Clareira do Sol</h3><p>Caminhos de pedra quentinha e dias de sol.</p></li><li class="gp-tile"><img class="gp-art" src="/petbox/img/gardens/moon-hollow.png" width="320" height="180" alt="O Vale da Lua à noite: pets Divinos brilhando ao lado de uma lanterna e de um lago violeta" loading="lazy" decoding="async"><h3>Vale da Lua</h3><p>Lanternas, cristais e noites estreladas.</p></li><li class="gp-tile"><img class="gp-art" src="/petbox/img/gardens/cloud-isle.png" width="320" height="180" alt="A Ilha Nuvem na primavera: uma árvore florida sobre as nuvens e pets perto de um lago de nuvens" loading="lazy" decoding="async"><h3>Ilha Nuvem</h3><p>Um jardim flutuando sobre as nuvens.</p></li><li class="gp-tile"><img class="gp-art" src="/petbox/img/gardens/coral-reef.png" width="320" height="180" alt="O Recife de Coral: pets flutuam sobre a areia perto de uma árvore de algas e de uma lagoa de coral" loading="lazy" decoding="async"><h3>Recife de Coral</h3><p>No fundo do mar, todos os pets flutuam.</p></li></ul>
+    
+  </div>
+</section>
+
+<section class="section gp-feature gp-feature--flip" id="play" aria-labelledby="play-h" data-reveal>
+  <div class="wrap gp-feature__in">
+    <div class="gp-feature__text">
+      <h2 id="play-h">Corra, treine e brilhe</h2>
+      <div class="gp-prose">
+        <p>Ganhe faixas no Dojo com um parceiro de treino e depois corra sobre obstáculos, por piscinas, planando de penhascos e escalando paredes, da Copa Broto até a Liga Estelar. Tente a Copa da Semana, bata seus melhores tempos e quique no Ringue Tumble.</p>
+        <p>Todo fim de semana abre o Festival do Jardim, com o Concurso Charme e o Concurso de Jardim, onde três juízes avaliam a decoração que você monta. Leve uma banda de pets ao palco no Show de Talentos, com um tema novo toda semana. Precisa de uma pausa? Jogue Pesca no Lago, Pega-Fruta ou Esconde-Esconde.</p>
+        <p><a href="/petbox/media/petbox-trailer-v1.mp4">Veja o trailer de jogo de 32 segundos</a> (MP4).</p>
+      </div>
+    </div>
+    <figure class="gp-media"><div class="pixel-frame gp-media__frame gp-loop"><video id="gp-loop-race" class="gp-art" muted loop playsinline preload="none" disablepictureinpicture width="640" height="360" poster="/petbox/media/loops/race-v1.png" aria-label="Clipe de corrida, sem som"><source src="/petbox/media/loops/race-v1.mp4" type="video/mp4"></video><button class="gp-loop__btn" type="button" aria-controls="gp-loop-race" aria-pressed="false" hidden ><svg class="ic-pause" viewBox="0 0 4 4" aria-hidden="true" focusable="false"><path d="M0 0h1v4H0zM3 0h1v4H3z"/></svg><svg class="ic-play" viewBox="0 0 4 4" aria-hidden="true" focusable="false"><path d="M0 0h1v1h1v1h1v1H2v1H1V4H0z"/></svg><span class="sr-only">Pausar o clipe</span></button></div><figcaption class="gp-cap">Uma corrida na Copa Estrela: do penhasco, pelos aros, primeiro na chegada (imagens do jogo em inglês).</figcaption></figure>
+    
+  </div>
+</section>
+
+<section class="section gp-feature" id="friends" aria-labelledby="friends-h" data-reveal>
+  <div class="wrap gp-feature__in">
+    <div class="gp-feature__text">
+      <h2 id="friends-h">Amigos perto e longe</h2>
+      <div class="gp-prose">
+        <p>Visite a Praça da Amizade, onde os jardineiros da vila aparecem com seus pets para correr, brincar e trocar presentinhos. Compartilhe códigos curtos com amigos para mandar um pet num Postal do Jardim, mostrar seu jardim, trocar pets ou correr contra o fantasma de um amigo.</p>
+        <p>Estão no mesmo Wi-Fi? Com o Jogar Juntos, dois celulares dividem um jardim: joguem a bola, mandem emotes e encham juntos uma cesta de frutas. Ele usa só o Wi-Fi da sua casa, nunca a internet.</p>
+      </div>
+    </div>
+    <figure class="gp-media"><div class="pixel-frame gp-media__frame"><img class="gp-art" src="/petbox/img/shots/pt-br/05-plaza.png" width="640" height="360" alt="A Praça da Amizade: seus pets e os pets dos jardineiros da vila em volta de uma fonte" loading="lazy" decoding="async"></div><figcaption class="gp-cap">Amigos visitando a Praça da Amizade</figcaption></figure>
+    
+  </div>
+</section>
+
+<section class="section gp-feature gp-feature--flip" id="hazel" aria-labelledby="hazel-h" data-reveal>
+  <div class="wrap gp-feature__in">
+    <div class="gp-feature__text">
+      <div class="gp-badge" aria-hidden="true"><span class="gp-pet gp-pet--badge" style="--w:37;--h:31;--ay:27;--fx:53"><canvas class="sprite" data-sprite="petbox/hazel" data-seq="idle*3,hammer" data-tap="cheer" width="37" height="31" aria-hidden="true"></canvas></span></div><h2 id="hazel-h">Ajude a Hazel</h2>
+      <div class="gp-prose">
+        <p>Hazel Burrow, a toupeira que faz brinquedos, constrói os balanços, as fontes e os carrosséis pequenininhos onde seus pets brincam de verdade, e na oficina esculpe estátuas de ouro e de cristal dos seus favoritos. Um dia a caixa mágica de brinquedos dela, a própria Petbox, perde suas quatro peças, e ela vai precisar da sua ajuda para encontrá-las.</p>
+      </div>
+    </div>
+    <figure class="gp-media"><div class="pixel-frame gp-media__frame"><img class="gp-art" src="/petbox/img/shots/pt-br/08-workshop.png" width="640" height="360" alt="A Oficina da Hazel: a Hazel mostra uma estátua de ouro brilhante de um pet" loading="lazy" decoding="async"></div><figcaption class="gp-cap">Uma estátua de ouro da Oficina da Hazel</figcaption></figure>
+    
+  </div>
+</section>
+
+<section class="section gp-gallery" id="screenshots" aria-labelledby="screenshots-h" data-reveal>
+  <div class="wrap">
+    <h2 id="screenshots-h">Capturas de tela</h2>
+    <p class="gp-gallery__hint">Escolha uma imagem para ver maior.</p>
+    <ul class="gp-thumbs" id="gp-thumbs" data-close="Fechar" data-prev="Imagem anterior" data-next="Próxima imagem" data-of="de"><li><a class="gp-thumb" href="/petbox/img/shots/pt-br/01-cozy-oasis.png" data-caption="O Oásis Aconchegante numa manhã de outono"><img src="/petbox/img/shots/pt-br/thumbs/01-cozy-oasis.png" width="320" height="180" alt="Pets no balanço, no banco e no lago em volta da dourada Árvore Glimmer no Oásis Aconchegante" loading="lazy" decoding="async"></a></li><li><a class="gp-thumb" href="/petbox/img/shots/pt-br/03-race.png" data-caption="Planando de um penhasco numa corrida"><img src="/petbox/img/shots/pt-br/thumbs/03-race.png" width="320" height="180" alt="Uma corrida: os pets planam de um penhasco sobre a água, e o seu está em primeiro lugar" loading="lazy" decoding="async"></a></li><li><a class="gp-thumb" href="/petbox/img/shots/pt-br/04-cloud-isle.png" data-caption="A Ilha Nuvem na primavera"><img src="/petbox/img/shots/pt-br/thumbs/04-cloud-isle.png" width="320" height="180" alt="A Ilha Nuvem na primavera: ilhas floridas flutuando, um arco-íris e pets perto de um lago de nuvens" loading="lazy" decoding="async"></a></li><li><a class="gp-thumb" href="/petbox/img/shots/pt-br/06-fishing.png" data-caption="Pesca no Lago: um Koi Dourado!"><img src="/petbox/img/shots/pt-br/thumbs/06-fishing.png" width="320" height="180" alt="Pesca no Lago: um Gillby num píer pesca um Koi Dourado" loading="lazy" decoding="async"></a></li><li><a class="gp-thumb" href="/petbox/img/shots/pt-br/07-hybrids.png" data-caption="Os sete híbridos na Clareira do Sol"><img src="/petbox/img/shots/pt-br/thumbs/07-hybrids.png" width="320" height="180" alt="A Clareira do Sol no verão com os sete pets híbridos" loading="lazy" decoding="async"></a></li><li><a class="gp-thumb" href="/petbox/img/shots/pt-br/12-talent-show.png" data-caption="A banda se prepara para o Show de Talentos"><img src="/petbox/img/shots/pt-br/thumbs/12-talent-show.png" width="320" height="180" alt="O Show de Talentos: uma banda de pets no palco, cada um com seu instrumento, pronta para tocar" loading="lazy" decoding="async"></a></li></ul>
+  </div>
+</section>
+
+<section class="section gp-grownups" id="grown-ups" aria-labelledby="grown-ups-h" data-reveal>
+  <div class="wrap">
+    <p class="eyebrow">Para adultos</p>
+    <h2 id="grown-ups-h">Tranquilo, gentil, privado</h2>
+    <p class="gp-lede">O Petbox é feito para crianças e famílias. Veja exatamente o que isso quer dizer, em palavras simples.</p>
+    <div class="gp-promises"><div class="gp-promise"><h3>Tranquilo de propósito</h3><ul class="gp-checks"><li>Os pets descansam enquanto você está fora: ninguém passa fome, não há cronômetros que castigam e nada se perde.</li><li>Um limite de jogo por dia e uma hora de dormir em <strong>Ajustes &gt; Adultos</strong>, protegidos por uma verificação para adultos. Os dois vêm desligados até você ligar. Quando o tempo acaba, os pets bocejam e vão para a cama, e nada se perde.</li><li>Os lembretes de boas notícias ficam desligados, a não ser que um adulto ligue: no máximo um por dia, nunca à noite e só com notícias felizes, como “Seu ovo nasceu!”</li><li>Letra grande, volume de música e sons, menos movimento, tempo relaxado e vibração.</li><li>Disponível em português do Brasil, espanhol e inglês.</li></ul></div><div class="gp-promise"><h3>Promessas de privacidade</h3><ul class="gp-checks"><li>Sem anúncios, sem contas e sem coleta de dados. Seu jardim fica salvo só no seu aparelho.</li><li>Sem chat: quando amigos jogam juntos, eles mandam emotes prontos, nunca mensagens digitadas.</li><li>Funciona offline. O Jogar Juntos conecta dois celulares só pelo Wi-Fi da sua casa, nunca pela internet.</li><li>Os nomes de pets que chegam de outros jogadores passam por um filtro de nomes no seu aparelho.</li><li>Nada está à venda no jogo. Se isso mudar algum dia, as compras vão ficar protegidas por uma verificação para adultos.</li></ul></div></div>
+    <p class="gp-policy"><a href="/petbox/privacy/pt-br/">Leia a política de privacidade do Petbox</a></p>
+    <div class="gp-grownups__shots"><figure class="gp-media gp-media--half"><div class="pixel-frame gp-media__frame"><img src="/petbox/img/shots/pt-br/15-grown-ups.png" width="640" height="360" alt="A página de ajustes para adultos: limite de jogo, hora de dormir e lembretes de boas notícias, todos desligados" loading="lazy" decoding="async"></div><figcaption class="gp-cap">Ajustes &gt; Adultos: tudo começa desligado</figcaption></figure><figure class="gp-media gp-media--half"><div class="pixel-frame gp-media__frame"><img src="/petbox/img/shots/pt-br/16-bedtime.png" width="640" height="360" alt="A tela da hora de dormir à noite: Até amanhã! Acabou a brincadeira de hoje. Seus pets dormem quentinhos." loading="lazy" decoding="async"></div><figcaption class="gp-cap">Hora de dormir: os pets vão para a cama e nada se perde</figcaption></figure></div>
+  </div>
+</section>
+
+<section class="section gp-soonbox" id="coming-soon" aria-labelledby="coming-soon-h" data-reveal>
+  <div class="wrap">
+    <div class="gp-soonbox__in pixel-frame">
+      <div class="gp-soonbox__pet" aria-hidden="true"><span class="gp-pet gp-pet--soon" style="--w:37;--h:31;--ay:27;--fx:53"><canvas class="sprite" data-sprite="petbox/hazel" data-seq="hammer*3,idle*2" data-tap="cheer" width="37" height="31" aria-hidden="true"></canvas></span></div>
+      <div class="gp-soonbox__text">
+        <h2 id="coming-soon-h">Em breve</h2>
+        <p>O Petbox está recebendo os últimos retoques na oficina da Hazel. Ele vai chegar aos celulares Android pelo Google Play, e o link vai aparecer bem aqui no dia do lançamento.</p>
+        <p class="gp-soonbox__small">Não tem cadastro nem lista de e-mails: é só voltar aqui.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section gp-press" id="press" aria-labelledby="press-h" data-reveal>
+  <div class="wrap gp-press__in">
+    <div>
+      <h2 id="press-h">Imprensa e contato</h2>
+      <p>Vai escrever sobre o Petbox ou gravar um vídeo? O <a href="/press/">kit de imprensa</a> tem a ficha técnica, os logos e as capturas de tela.</p>
+      <p>Dúvidas, ideias ou uma palavra gentil: <a href="mailto:support@boxunitedgames.com">support@boxunitedgames.com</a></p>
+    </div>
+    <ul class="gp-downloads"><li><a href="/petbox/media/petbox-cozy-v1.mp4" download>Trailer</a> <span class="muted">(MP4, 36 s, 2.0 MB)</span></li><li><a href="/petbox/media/petbox-trailer-v1.mp4" download>Trailer de jogo</a> <span class="muted">(MP4, 32 s, 1.9 MB)</span></li><li><a href="/petbox/media/petbox-short-v1.mp4" download>Trailer curto vertical</a> <span class="muted">(MP4, 20 s, 1.6 MB)</span></li></ul>
+  </div>
+</section>
+</main>
+<footer class="site-foot"><div class="site-foot__in">
+  <span>&copy; 2026 Box United</span><a href="/privacy/">Privacidade</a><a href="/press/">Imprensa</a><a href="mailto:support@boxunitedgames.com">support@boxunitedgames.com</a><span>Sem cookies, sem rastreadores.</span>
+  <p class="site-foot__extra gp-foot"><span class="gp-foot__langs"><a href="/petbox/" hreflang="en" lang="en">English</a><a href="/petbox/es/" hreflang="es" lang="es">Español</a><a href="/petbox/pt-br/" hreflang="pt-BR" lang="pt-BR" aria-current="page">Português</a></span><a href="/petbox/privacy/pt-br/">Política de privacidade do Petbox</a></p>
+</div></footer>
 </body>
 </html>

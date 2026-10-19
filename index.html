@@ -2,91 +2,217 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self'; media-src 'self'; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
-<title>Box United - Cozy little games</title>
-<meta name="description" content="Box United is a tiny game studio making cozy little games with care. Our first game, Petbox, is a pixel pet garden coming soon to Google Play.">
+<meta name="theme-color" content="#f6f0e4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1b1524" media="(prefers-color-scheme: dark)">
+<title>Box United - Cozy little games made with care</title>
+<meta name="description" content="Box United is a new, independent studio making cozy little games for kids and families. Our first game, Petbox, is coming soon to Google Play.">
 <link rel="canonical" href="https://boxunitedgames.com/">
-<link rel="icon" href="img/box.svg" type="image/svg+xml">
-<link rel="icon" href="img/box-180.png" type="image/png">
-<link rel="apple-touch-icon" href="img/box-180.png">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/brand/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/box-pixel-v1.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/brand.css">
+<link rel="stylesheet" href="/assets/css/site.css">
 <style>
-  :root { --bg: #f3efe6; --panel: #ffffff; --ink: #2f2540; --muted: #6b6280; --link: #c2185b;
-          --edge: #2f2540; --shadow: #2f2540; --wood: #c98d52; --wood-hi: #e8b77d; --wood-lo: #8f5f33;
-          --pink: #e8457f; --blush: #ffd1e0; --badge-bg: #f6e3c8; --badge-ink: #6b4423; --grass: #7fbf6a; --grass-lo: #5a9e4b; }
-  @media (prefers-color-scheme: dark) {
-    :root { --bg: #1a1610; --panel: #241f18; --ink: #f2ece2; --muted: #b3a894; --link: #ff8fb5;
-            --edge: #5a4d3c; --shadow: #000000; --wood: #d39a5e; --wood-hi: #f0c48c; --wood-lo: #9c6a3b;
-            --pink: #ff6f9f; --blush: #ffd1e0; --badge-bg: #3a2f22; --badge-ink: #f0c48c; --grass: #4f7f44; --grass-lo: #3b6334; }
-  }
-  * { box-sizing: border-box }
-  html { background: var(--bg) }
-  body { margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif }
-  .wrap { max-width: 760px; margin: 0 auto; padding: 40px 16px 32px }
-  a { color: var(--link) }
-  header { display: flex; gap: 20px; align-items: center; flex-wrap: wrap }
-  header > div { flex: 1 1 200px; min-width: 0 }
-  .logo { width: 96px; height: 96px; flex: none }
-  .logo .k { fill: var(--ink) } .logo .w { fill: var(--wood) } .logo .l { fill: var(--wood-hi) }
-  .logo .d { fill: var(--wood-lo) } .logo .p { fill: var(--pink) } .logo .h { fill: var(--blush) }
-  h1 { margin: 0; font-size: clamp(34px, 7vw, 52px); line-height: 1.05; letter-spacing: -0.5px }
-  .tag { margin: 6px 0 0; color: var(--muted); font-size: 1.1em }
-  h2 { margin: 40px 0 14px; font-size: 1em; text-transform: uppercase; letter-spacing: 2px; color: var(--muted) }
-  .card { display: flex; gap: 18px; align-items: center; padding: 18px; background: var(--panel); color: var(--ink);
-          text-decoration: none; border: 3px solid var(--edge); box-shadow: 6px 6px 0 var(--shadow);
-          transition: transform .12s, box-shadow .12s }
-  .card:hover, .card:focus-visible { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--shadow) }
-  .card:focus-visible { outline: 3px solid var(--pink); outline-offset: 4px }
-  .card img { width: 88px; height: 88px; flex: none; image-rendering: pixelated; border-radius: 20px }
-  .card h3 { margin: 0; font-size: 1.5em; line-height: 1.2 }
-  .card p { margin: 4px 0 10px }
-  .badge { display: inline-block; padding: 2px 10px; font-size: 0.85em; font-weight: 600;
-           background: var(--badge-bg); color: var(--badge-ink); border: 2px solid var(--edge) }
-  .row { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center }
-  .more { color: var(--link); font-weight: 600; white-space: nowrap }
-  .hello { padding: 16px 18px; background: var(--panel); border: 2px dashed var(--pink) }
-  .hello p { margin: 0 }
-  .grass { height: 12px; margin: 48px 0 0; background:
-           linear-gradient(var(--grass), var(--grass)) 0 4px / 100% 8px no-repeat,
-           repeating-linear-gradient(90deg, var(--grass-lo) 0 4px, transparent 4px 12px, var(--grass) 12px 16px, transparent 16px 24px) 0 0 / 100% 4px no-repeat }
-  footer { margin-top: 14px; color: var(--muted); font-size: 0.9em; display: flex; gap: 8px 18px; flex-wrap: wrap }
-  footer a { color: inherit }
-  @media (max-width: 480px) { .card { flex-direction: column; align-items: flex-start } }
-  @media (prefers-reduced-motion: reduce) { .card { transition: none } .card:hover { transform: none } }
+/* Home-only styles (W2). Shared frame: /assets/css/site.css. */
+/* ---------- studio home hero ----------
+   The scene is pixel art at an integer scale --art (1 art px = --art CSS px): 2 on phones, 3 from 560 px, 4 from
+   1360 px (where --wrap grows to 1200 so the wordmark stays on one line). Two columns from 1100 px. The stage is 160x68 art px; feet stand 4 art px above its bottom, and the stage overlaps the ground
+   strip by 8 art px, so feet land in the grass. The still (pre-rendered 1x PNG, same box) is what JS-off and
+   reduced-motion visitors see; home.js draws its canvases in the same box (CLS 0). Sky: flat bands, no gradients. */
+.hero { --art: 2; --sprite-scale: var(--art);
+  position: relative; overflow: hidden;
+  background: linear-gradient(to top, var(--sky-2) 0 calc(30px * var(--art)), var(--sky-3) 0 calc(48px * var(--art)), var(--sky-1) 0) }
+@media (min-width: 560px) { .hero { --art: 3 } }
+@media (min-width: 1360px) { .hero { --art: 4 } }
+.hero__in { position: relative; z-index: 1; display: grid; gap: var(--sp-3); align-items: end; max-width: var(--wrap); margin: 0 auto;
+  padding: var(--sp-6) max(var(--sp-4), env(safe-area-inset-right)) 0 max(var(--sp-4), env(safe-area-inset-left)) }
+@media (min-width: 1100px) { .hero__in { grid-template-columns: minmax(0, 1fr) auto; gap: var(--sp-6); padding-top: var(--sp-7) } }
+.hero__text { align-self: center; max-width: 32em }
+@media (min-width: 1100px) { .hero__text { padding-bottom: var(--sp-7) } }
+.hero__text h1 { font-size: var(--pix-5x) }
+@media (min-width: 768px) { .hero__text h1 { font-size: var(--pix-8x) } }
+.hero__tag { margin-top: var(--sp-3); font-size: var(--fs-2); line-height: 1.3; font-weight: 800 }
+.hero__sub { margin-top: var(--sp-3); font-size: var(--fs-1) }
+.hero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-3) var(--sp-5); margin-top: var(--sp-5) }
+
+.hero__scene { position: relative; justify-self: center; width: calc(160px * var(--art)); max-width: none; margin-bottom: calc(-8px * var(--art)) }
+@media (max-width: 351px) { .hero__scene { margin-left: calc(-1 * var(--sp-4)); margin-right: calc(-1 * var(--sp-4)) } } /* 320 px: full width */
+.stage { position: relative; width: calc(160px * var(--art)); height: calc(68px * var(--art)); overflow: hidden } /* pets start inside the chest */
+.stage__still, .stage canvas { position: absolute; left: 0; bottom: 0; max-width: none; image-rendering: crisp-edges; image-rendering: pixelated }
+.stage__still { width: 100%; height: 100% }
+.stage canvas { will-change: transform; touch-action: manipulation }
+.stage.is-live .stage__pic { visibility: hidden }
+.cloud { position: absolute; left: calc(10px * var(--art)); top: calc(12px * var(--art)); width: calc(22px * var(--art)); height: calc(6px * var(--art)); fill: var(--surface) }
+/* night: no cloud, a few static stars (1 art px) in the scene's own sky - never behind the text column */
+.hero__scene::before { content: none; position: absolute; z-index: 0; left: calc(8px * var(--art)); top: calc(6px * var(--art));
+  width: calc(1px * var(--art)); height: calc(1px * var(--art)); --star: color-mix(in srgb, var(--ink) 85%, transparent); background: var(--star);
+  box-shadow: calc(19px * var(--art)) calc(9px * var(--art)) var(--star), calc(41px * var(--art)) calc(-3px * var(--art)) var(--star),
+    calc(63px * var(--art)) calc(4px * var(--art)) var(--star), calc(88px * var(--art)) calc(-1px * var(--art)) var(--star),
+    calc(105px * var(--art)) calc(11px * var(--art)) var(--star), calc(128px * var(--art)) calc(19px * var(--art)) var(--star) }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .hero__scene::before { content: "" }
+  :root:not([data-theme="light"]) .cloud { display: none }
+}
+:root[data-theme="dark"] .hero__scene::before { content: "" }
+:root[data-theme="dark"] .cloud { display: none }
+
+/* pause: a quiet icon button in the scene's top-right corner (44x44 hit area); its name stays "Pause animation" */
+.motion-toggle { position: absolute; right: 0; top: 0; z-index: 6; display: grid; place-items: center; width: 44px; height: 44px; padding: 0;
+  border: 2px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer }
+.motion-toggle[hidden] { display: none }
+.motion-toggle svg { width: 12px; height: 12px; fill: currentColor; shape-rendering: crispEdges }
+.motion-toggle .ic-play, .motion-toggle[aria-pressed="true"] .ic-pause { display: none }
+.motion-toggle[aria-pressed="true"] .ic-play { display: block }
+
+/* pixel ground strip, full bleed; every edge is a whole multiple of --art */
+.ground { position: relative; z-index: 0; height: calc(16px * var(--art)); background:
+  linear-gradient(var(--ground) 0 0) 0 calc(2px * var(--art)) / 100% calc(5px * var(--art)) no-repeat,
+  repeating-linear-gradient(90deg, var(--ground) 0 calc(2px * var(--art)), transparent 0 calc(5px * var(--art)), var(--ground) 0 calc(6px * var(--art)), transparent 0 calc(11px * var(--art)))
+    0 calc(1px * var(--art)) / 100% calc(1px * var(--art)) no-repeat,
+  linear-gradient(var(--ground-2) 0 0) 0 calc(7px * var(--art)) / 100% 100% no-repeat }
+.ground::after { content: ""; position: absolute; left: 0; right: 0; top: calc(10px * var(--art)); height: calc(1px * var(--art));
+  background: repeating-linear-gradient(90deg, var(--ground) 0 calc(1px * var(--art)), transparent 0 calc(13px * var(--art))) }
+
+/* ---------- games ---------- */
+.stretch::after { content: ""; position: absolute; inset: 0; z-index: 1 }
+.game-feature { position: relative; display: grid; gap: var(--sp-5); align-items: center; padding: var(--sp-4) }
+@media (min-width: 960px) { .game-feature { grid-template-columns: 640px minmax(0, 1fr); gap: var(--sp-6); padding: var(--sp-5) } }
+.game-feature__media { line-height: 0; width: 100% }
+@media (min-width: 720px) { .game-feature__media { width: 640px; max-width: 100% } } /* 2x the 320 px game frame */
+.game-feature__art, .game-card__art { width: 100%; height: auto; display: block; image-rendering: pixelated }
+.game-feature__body { min-width: 0 }
+.game-feature__title { display: flex; align-items: center; gap: var(--sp-3); font: 400 var(--pix-4x)/var(--lh-pixel) var(--font-display); font-synthesis: none }
+.game-feature__title img { width: 64px; height: 64px; image-rendering: pixelated; flex: none }
+.game-feature__text { margin-top: var(--sp-3); font-size: var(--fs-1) }
+.game-meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2) var(--sp-3); margin-top: var(--sp-4); font-size: var(--fs--1); font-weight: 700; color: var(--ink-soft) }
+.game-feature__cta { margin-top: var(--sp-5) }
+.game-feature:hover { --lift-x: calc(var(--px) * 3); --lift-y: calc(var(--px) * 4) }
+.game-feature .btn:focus-visible { outline: none }
+.game-feature:has(.btn:focus-visible) { outline: 3px solid var(--focus); outline-offset: calc(var(--px) * 3) }
+.games-note { margin-top: var(--sp-5); color: var(--ink-soft) }
+.game-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 326px), 1fr)); gap: var(--sp-6); margin: 0; padding: 0; list-style: none }
+.game-card { position: relative; padding: var(--sp-3) var(--sp-3) var(--sp-4) }
+.game-card__title { margin: var(--sp-3) 0 var(--sp-1); font: 400 var(--pix-3x)/var(--lh-pixel) var(--font-display) }
+.game-card__title a { color: inherit; text-decoration: none }
+
+/* ---------- about + contact ---------- */
+.about { display: grid; gap: var(--sp-5) var(--sp-7) }
+@media (min-width: 960px) { .about { grid-template-columns: 280px minmax(0, 1fr) } }
+.about__body { max-width: 38em; font-size: var(--fs-1) }
+.about__body p + p { margin-top: var(--sp-4) }
+.contact { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--sp-4) var(--sp-5); margin-top: var(--sp-5) }
+.contact p { font-size: var(--fs-1); max-width: 34em }
+.contact .email { font-weight: 800; word-break: break-word }
+
+@media (prefers-reduced-motion: reduce) {
+  .stage canvas { will-change: auto }
+  .game-feature:hover { --lift-x: calc(var(--px) * 2); --lift-y: calc(var(--px) * 3) }
+}
 </style>
+<!-- build:hero-scripts -->
+    <script defer src="/assets/js/sprites.js"></script>
+<script defer src="/assets/sprites/home.js"></script>
+<script defer src="/assets/js/home.js"></script>
+    <!-- /build:hero-scripts -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Box United">
+<meta property="og:title" content="Box United - Cozy little games made with care">
+<meta property="og:description" content="A new, independent studio making cozy little games for kids and families. Our first game, Petbox, is coming soon to Google Play.">
+<meta property="og:url" content="https://boxunitedgames.com/">
+<meta property="og:image" content="https://boxunitedgames.com/assets/brand/og-studio.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Box United logo and the line Cozy little games made with care, above an open pixel toy box with four Petbox pets on the grass">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image:alt" content="Box United logo and the line Cozy little games made with care, above an open pixel toy box with four Petbox pets on the grass">
+<noscript><style>.stage__pic { display: none }</style></noscript>
+<!-- build:ld -->
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Box United", "url": "https://boxunitedgames.com/", "logo": "https://boxunitedgames.com/assets/brand/mark-512.png", "email": "support@boxunitedgames.com", "subjectOf": [{"@type": "VideoGame", "name": "Petbox", "url": "https://boxunitedgames.com/petbox/", "gamePlatform": ["Android"], "description": "Hatch, raise and race tiny pixel pets in cozy gardens that grow with you."}]}</script>
+    <!-- /build:ld -->
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <svg class="logo" viewBox="0 0 16 16" width="96" height="96" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect class="p" x="5" y="2" width="2" height="1"/><rect class="p" x="9" y="2" width="2" height="1"/><rect class="p" x="4" y="3" width="1" height="1"/><rect class="h" x="5" y="3" width="1" height="1"/><rect class="p" x="6" y="3" width="6" height="1"/><rect class="p" x="4" y="4" width="8" height="1"/><rect class="k" x="1" y="5" width="2" height="1"/><rect class="p" x="5" y="5" width="6" height="1"/><rect class="k" x="13" y="5" width="2" height="1"/><rect class="k" x="1" y="6" width="1" height="1"/><rect class="w" x="2" y="6" width="1" height="1"/><rect class="k" x="3" y="6" width="1" height="1"/><rect class="p" x="6" y="6" width="4" height="1"/><rect class="k" x="12" y="6" width="1" height="1"/><rect class="w" x="13" y="6" width="1" height="1"/><rect class="k" x="14" y="6" width="1" height="1"/><rect class="k" x="2" y="7" width="1" height="1"/><rect class="w" x="3" y="7" width="1" height="1"/><rect class="k" x="4" y="7" width="1" height="1"/><rect class="p" x="7" y="7" width="2" height="1"/><rect class="k" x="11" y="7" width="1" height="1"/><rect class="w" x="12" y="7" width="1" height="1"/><rect class="k" x="13" y="7" width="1" height="1"/><rect class="k" x="2" y="8" width="12" height="1"/><rect class="k" x="2" y="9" width="1" height="1"/><rect class="l" x="3" y="9" width="10" height="1"/><rect class="k" x="13" y="9" width="1" height="1"/><rect class="k" x="2" y="10" width="1" height="1"/><rect class="w" x="3" y="10" width="10" height="1"/><rect class="k" x="13" y="10" width="1" height="1"/><rect class="k" x="2" y="11" width="1" height="1"/><rect class="w" x="3" y="11" width="4" height="1"/><rect class="k" x="7" y="11" width="2" height="1"/><rect class="w" x="9" y="11" width="4" height="1"/><rect class="k" x="13" y="11" width="1" height="1"/><rect class="k" x="2" y="12" width="1" height="1"/><rect class="w" x="3" y="12" width="10" height="1"/><rect class="k" x="13" y="12" width="1" height="1"/><rect class="k" x="2" y="13" width="1" height="1"/><rect class="w" x="3" y="13" width="10" height="1"/><rect class="k" x="13" y="13" width="1" height="1"/><rect class="k" x="2" y="14" width="1" height="1"/><rect class="d" x="3" y="14" width="10" height="1"/><rect class="k" x="13" y="14" width="1" height="1"/><rect class="k" x="2" y="15" width="12" height="1"/></svg>
-    <div>
-      <h1>Box United</h1>
-      <p class="tag">Cozy little games made with care.</p>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head"><div class="site-head__in">
+  <a class="brand" href="/"><img src="/assets/brand/logo.svg" alt="" width="32" height="32"><span>Box United</span></a>
+  <nav class="site-nav" aria-label="Main"><a href="/#games">Games</a><a href="/#about">About</a><a href="/press/">Press</a><a href="/#contact">Contact</a></nav>
+</div></header>
+
+<main id="main">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero__in">
+      <div class="hero__text">
+        <h1 id="hero-title">Box United</h1>
+        <p class="hero__tag">Cozy little games made with care.</p>
+        <p class="hero__sub">Our first game, Petbox, is coming soon to Google Play.</p>
+        <div class="hero__actions">
+    <!-- build:hero-cta -->
+    <a class="btn btn--primary" href="/petbox/">Meet Petbox</a>
+    <!-- /build:hero-cta -->
+        </div>
+      </div>
+      <div class="hero__scene">
+        <button class="motion-toggle" type="button" aria-pressed="false" hidden>
+          <svg class="ic-pause" viewBox="0 0 6 6" aria-hidden="true" focusable="false"><rect x="0" y="0" width="2" height="6"/><rect x="4" y="0" width="2" height="6"/></svg>
+          <svg class="ic-play" viewBox="0 0 6 6" aria-hidden="true" focusable="false"><rect x="0" y="0" width="2" height="6"/><rect x="2" y="1" width="2" height="4"/><rect x="4" y="2" width="2" height="2"/></svg>
+          <span class="sr-only">Pause animation</span>
+        </button>
+    <!-- build:hero-stage -->
+    <div class="stage" data-scene="box" data-cast="petbox/glimmling,petbox/drakelet,petbox/puffling,petbox/gillby" data-sheets="studio,petbox" data-slots="33,125,12,147">
+          <svg class="cloud" viewBox="0 0 22 6" aria-hidden="true" focusable="false" shape-rendering="crispEdges"><rect x="6" width="5" height="1"/><rect x="4" y="1" width="9" height="1"/><rect x="15" y="1" width="4" height="1"/><rect x="2" y="2" width="19" height="1"/><rect y="3" width="22" height="2"/><rect x="1" y="5" width="20" height="1"/></svg>
+          <picture class="stage__pic"><source media="(prefers-reduced-motion: reduce) and (prefers-color-scheme: dark)" srcset="/img/home/box-open-v1-night.png"><source media="(prefers-reduced-motion: reduce)" srcset="/img/home/box-open-v1.png"><source media="(prefers-color-scheme: dark)" srcset="/img/home/box-closed-v1-night.png"><img class="stage__still" src="/img/home/box-closed-v1.png" width="160" height="68" alt="" fetchpriority="high"></picture>
+          <noscript><picture><source media="(prefers-color-scheme: dark)" srcset="/img/home/box-open-v1-night.png"><img class="stage__still" src="/img/home/box-open-v1.png" width="160" height="68" alt=""></picture></noscript>
+        </div>
+    <!-- /build:hero-stage -->
+      </div>
     </div>
-  </header>
+    <div class="ground" aria-hidden="true"></div>
+  </section>
 
-  <h2>Our games</h2>
-  <a class="card" href="petbox/">
-    <img src="petbox/img/icon.png" alt="Petbox app icon: Hazel the toymaker mole in a toy box" width="88" height="88">
-    <div>
-      <h3>Petbox</h3>
-      <p>Hatch, raise and race tiny pixel pets in cozy gardens that grow with you.</p>
-      <div class="row"><span class="badge">Coming soon to Google Play</span> <span class="more">Visit Petbox &rarr;</span></div>
+  <section class="section wrap" id="games" aria-labelledby="games-title" data-reveal>
+    <div class="section__head"><h2 id="games-title">Our games</h2></div>
+    <!-- build:games -->
+    <article class="game-feature card" data-game="petbox">
+      <div class="game-feature__media">
+        <img class="game-feature__art" src="/img/games/petbox/cozy-oasis-960.png" srcset="/img/games/petbox/cozy-oasis-640.png 640w, /img/games/petbox/cozy-oasis-960.png 960w, /img/games/petbox/cozy-oasis-1280.png 1280w" sizes="(min-width: 720px) 640px, calc(100vw - 64px)" width="640" height="360" alt="Petbox gameplay: pets play on a swing, a bench and in the pond of the Cozy Oasis garden" loading="lazy" decoding="async">
+      </div>
+      <div class="game-feature__body">
+        <h3 class="game-feature__title"><img src="/img/games/petbox/icon-128.png" width="128" height="128" alt="" loading="lazy" decoding="async"><span>Petbox</span></h3>
+        <p class="game-feature__text">A cozy pixel pet garden for kids and families. Hatch a pet, give it a name and look after it: how you care for it shapes who it grows up to be.</p>
+        <p class="game-meta"><span class="badge">Coming soon</span> <span>Android &middot; English, Español, Português</span></p>
+        <p class="game-feature__cta"><a class="btn btn--primary stretch" href="/petbox/">Meet Petbox</a></p>
+      </div>
+    </article>
+    <p class="games-note">Petbox is our first game. More boxes are on the workbench.</p>
+    <!-- /build:games -->
+  </section>
+
+  <section class="section wrap" id="about" aria-labelledby="about-title" data-reveal>
+    <div class="about">
+      <h2 id="about-title">About the studio</h2>
+      <div class="about__body">
+        <p>Box United makes cozy little games for kids and families. Our first game, Petbox, is a pixel pet garden made with the Godot engine, in English, Spanish and Brazilian Portuguese. Every pet, tree and toy in it is drawn pixel by pixel by the game's own code.</p>
+        <p>We build for families first. Petbox's pets rest while you are away, so a busy week never ends in a sad garden, and a grown-ups page behind a simple check can set a daily playtime limit and a bedtime. There are no ads and no accounts, it plays offline, and it collects no data: the whole garden lives on your device.</p>
+      </div>
     </div>
-  </a>
+  </section>
 
-  <h2>Say hello</h2>
-  <div class="hello">
-    <p>Questions, ideas or a kind word? Write to us at
-      <a href="mailto:support@boxunitedgames.com">support@boxunitedgames.com</a></p>
-  </div>
+  <section class="section wrap" id="contact" aria-labelledby="contact-title" data-reveal>
+    <h2 id="contact-title">Say hello</h2>
+    <div class="contact card">
+      <p>Questions, ideas or a kind word? Write to us at <a class="email" href="mailto:support@boxunitedgames.com">support@boxunitedgames.com</a>.</p>
+      <a class="btn btn--ghost" href="/press/">Press kit</a>
+    </div>
+  </section>
+</main>
 
-  <div class="grass" aria-hidden="true"></div>
-  <footer>
-    <span>&copy; 2026 Box United</span>
-    <a href="privacy/">Privacy</a>
-    <span>No cookies, no trackers.</span>
-  </footer>
-</div>
+<footer class="site-foot"><div class="site-foot__in">
+  <span>&copy; 2026 Box United</span><a href="/privacy/">Privacy</a><a href="/press/">Press</a><a href="mailto:support@boxunitedgames.com">support@boxunitedgames.com</a><span>No cookies, no trackers.</span>
+</div></footer>
 </body>
 </html>

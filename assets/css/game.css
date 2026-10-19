@@ -1,0 +1,219 @@
+/* Box United game page template (W3). Loaded after brand.css, themes/<game>.css and site.css on
+   /<game>/ pages built by scripts/site/game_page.py. No game names or colours in here: a game's look
+   comes from its theme tokens (--sky-*, --ground*, --accent*) and its own art.
+   Pixel art is shown at whole multiples of its grid only (--ps = sprite scale, art px -> CSS px);
+   anything shown smaller than its file is smoothed (image-rendering: auto), never nearest-sampled. */
+
+/* ---------- sprite slots ---------- */
+.gp-pet {
+  --ps: 2;
+  --sprite-scale: var(--ps);
+  position: relative; display: inline-block; flex: none; vertical-align: bottom;
+  width: calc(var(--w) * var(--ps) * 1px); height: calc(var(--h) * var(--ps) * 1px);
+  margin-bottom: calc((var(--ay) + 1 - var(--h)) * var(--ps) * 1px);
+}
+.gp-pet::before { /* the designed still, from one baked strip: JS off, or until the sheet has drawn */
+  content: ""; position: absolute; inset: 0; image-rendering: pixelated;
+  background: var(--still) calc(var(--fx) * var(--ps) * -1px) 0 / calc(var(--sw) * var(--ps) * 1px) calc(var(--sh) * var(--ps) * 1px) no-repeat;
+}
+.gp-pet--flip::before { transform: scaleX(-1) }
+.gp-pet.is-live::before { visibility: hidden }
+.gp-pet canvas { position: absolute; left: 0; top: 0 }
+.gp-pet canvas[data-tap] { cursor: pointer; touch-action: manipulation }
+
+/* ---------- hero: a centred title screen on the game's banded sky ---------- */
+.gp-hero {
+  position: relative;
+  background: linear-gradient(var(--sky-1) 0 14%, color-mix(in srgb, var(--sky-1) 80%, var(--sky-2)) 14% 28%,
+    color-mix(in srgb, var(--sky-1) 60%, var(--sky-2)) 28% 42%, color-mix(in srgb, var(--sky-1) 40%, var(--sky-2)) 42% 56%,
+    color-mix(in srgb, var(--sky-1) 20%, var(--sky-2)) 56% 70%, var(--sky-2) 70% 100%);
+}
+.gp-hero__in { display: flex; flex-direction: column; align-items: center; text-align: center; padding-bottom: var(--sp-6) }
+.gp-langs { align-self: flex-end; display: flex; gap: 0 2px; margin: 0 -8px; font-size: var(--fs--1) }
+.gp-langs a { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; padding: 0 8px; color: var(--ink); font-weight: 700;
+  text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 2px }
+.gp-langs a[aria-current="page"] { text-decoration: none; box-shadow: inset 0 -3px 0 var(--ink) }
+.gp-logo { margin: var(--sp-2) 0 0; line-height: 0 }
+.gp-logo img { width: 272px; height: auto; image-rendering: pixelated }
+@media (min-width: 600px) { .gp-logo img { width: 544px } }
+.gp-hero__tag { margin: var(--sp-5) 0 0; max-width: 30em; font-size: var(--fs-1); font-weight: 700; line-height: 1.4; color: var(--ink) }
+.gp-hero__actions { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: var(--sp-3) var(--sp-5); margin-top: var(--sp-5) }
+.gp-cta svg { fill: currentColor; shape-rendering: crispEdges; flex: none }
+.gp-soon { margin: 0; font-weight: 800; color: var(--ink) }
+.gp-hero__facts { margin: var(--sp-3) 0 0; font-size: var(--fs--1); color: var(--ink) }
+
+/* the yard: the cast stands on a full-bleed pixel ground; a small hint + pause button sit in the soil */
+.gp-yard { --ps: 2; position: relative }
+@media (min-width: 900px) { .gp-yard { --ps: 3 } }
+@media (min-width: 1200px) { .gp-yard { --ps: 4 } }
+.gp-yard__cast { position: relative; z-index: 1; display: flex; justify-content: center; align-items: flex-end;
+  padding: 0 16px; margin-bottom: calc(var(--ps) * -5px) }
+.gp-yard .gp-pet { --ps: inherit; margin-left: calc(var(--gap, 8) * var(--ps) * 1px) }
+.gp-yard .gp-pet:first-child { margin-left: 0 }
+.gp-pet--wide { display: none }
+@media (min-width: 600px) { .gp-pet--wide { display: inline-block } }
+@media (max-width: 599px) { .gp-yard .gp-pet { margin-left: calc(min(var(--gap, 8), 10) * var(--ps) * 1px) } }
+.gp-yard__soil { background:
+  linear-gradient(var(--ground) 0 0) 0 calc(3px * var(--ps)) / 100% calc(4px * var(--ps)) no-repeat,
+  repeating-linear-gradient(90deg, var(--ground) 0 calc(2px * var(--ps)), transparent 0 calc(5px * var(--ps)), var(--ground) 0 calc(6px * var(--ps)), transparent 0 calc(11px * var(--ps)))
+    0 calc(2px * var(--ps)) / 100% calc(1px * var(--ps)) no-repeat,
+  linear-gradient(var(--ground-2) 0 0) 0 calc(7px * var(--ps)) / 100% 100% no-repeat }
+.gp-yard__in { display: flex; align-items: center; justify-content: flex-end; gap: var(--sp-3); min-height: calc(7px * var(--ps) + 52px);
+  padding-top: calc(7px * var(--ps)); padding-bottom: 4px }
+.gp-yard__hint { margin: 0; font-size: var(--fs--1); font-weight: 700; color: var(--ink) }
+.gp-yard__hint[hidden], .gp-motion[hidden] { display: none }
+.gp-motion, .gp-loop__btn {
+  display: inline-grid; place-items: center; width: 44px; height: 44px; padding: 0; flex: none;
+  border: 3px solid var(--edge); background: var(--surface); color: var(--ink); cursor: pointer }
+.gp-motion svg, .gp-loop__btn svg { width: 12px; height: 12px; fill: currentColor; shape-rendering: crispEdges }
+.gp-motion .ic-play, .gp-loop__btn .ic-play { display: none }
+.gp-motion[aria-pressed="true"] .ic-play, .gp-loop__btn[aria-pressed="true"] .ic-play { display: block }
+.gp-motion[aria-pressed="true"] .ic-pause, .gp-loop__btn[aria-pressed="true"] .ic-pause { display: none }
+.gp-motion:hover, .gp-loop__btn:hover { background: var(--accent-soft) }
+
+/* ---------- the trailer: one player, click to play, controls appear once it plays ---------- */
+.gp-trailer { padding-top: var(--sp-7); background: var(--bg) }
+.gp-trailer__in { display: flex; justify-content: center; padding-bottom: var(--sp-7) }
+.gp-trailer__fig { margin: 0; width: 100%; max-width: 646px }
+.gp-video { position: relative; line-height: 0; background: #000 }
+.gp-video video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #000 }
+.gp-video__play {
+  position: absolute; left: 50%; top: 50%; translate: -50% -50%;
+  display: grid; place-items: center; width: 68px; height: 68px; padding: 0; border: 0; cursor: pointer;
+  color: var(--ink); background: var(--surface);
+  box-shadow: 0 -3px 0 var(--edge), 0 3px 0 var(--edge), -3px 0 0 var(--edge), 3px 0 0 var(--edge), 6px 9px 0 var(--shadow) }
+.gp-video__play svg { width: 24px; height: 24px; fill: currentColor; shape-rendering: crispEdges; margin-left: 4px }
+.gp-video__play:hover { background: var(--accent-soft) }
+.gp-video__play:focus-visible { outline: 3px solid var(--focus); outline-offset: 6px }
+.gp-video__play[hidden] { display: none }
+.gp-cap { margin: var(--sp-3) 0 0; font-size: var(--fs--1); line-height: 1.5; color: var(--ink-soft) }
+.gp-cap a { white-space: nowrap }
+
+/* ---------- feature sections: text + one 640x360 picture, left-aligned on the site grid ---------- */
+.gp-feature__in { display: grid; gap: var(--sp-5) var(--sp-5); align-items: start }
+.gp-feature__text { min-width: 0; max-width: 38em }
+.gp-feature h2 { margin: 0 }
+.gp-badge { line-height: 0; margin-bottom: var(--sp-3) }
+.gp-prose { margin-top: var(--sp-4) }
+.gp-prose p { margin: 0 0 var(--sp-4) }
+.gp-prose h3 { margin: var(--sp-5) 0 var(--sp-2); font-size: var(--fs-1) }
+.gp-media { margin: 0; min-width: 0 }
+.gp-media__frame { line-height: 0 }
+.gp-media img, .gp-media video, .gp-art { display: block; width: 100%; height: auto }
+.gp-media video { aspect-ratio: 16 / 9; background: var(--surface-2) }
+@media (min-width: 720px) {
+  .gp-feature .gp-media { width: 646px; max-width: 100% } /* 640 + the 3px pixel frame */
+  .gp-feature .gp-media img, .gp-feature .gp-media video, .gp-tile img { image-rendering: pixelated }
+}
+@media (min-width: 1060px) {
+  .gp-feature__in { grid-template-columns: minmax(0, 1fr) 646px }
+  .gp-feature--flip .gp-feature__in { grid-template-columns: 646px minmax(0, 1fr) }
+  .gp-feature--flip .gp-media { order: -1 }
+  .gp-feature--wide .gp-feature__in { grid-template-columns: minmax(0, 1fr) }
+}
+.gp-pet--badge { --ps: 2 }
+.gp-loop { position: relative }
+.gp-loop__btn { position: absolute; right: 8px; bottom: 8px }
+.gp-loop__btn[hidden] { display: none }
+
+/* the four kinds */
+.gp-kinds { grid-column: 1 / -1 }
+.gp-kinds__title { margin: var(--sp-3) 0 var(--sp-4); font-size: var(--fs-1) }
+.gp-kinds__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-4); margin: 0; padding: 0; list-style: none }
+@media (min-width: 840px) { .gp-kinds__list { grid-template-columns: repeat(4, minmax(0, 1fr)) } }
+.gp-kind { padding: var(--sp-4); background: var(--surface); border: 3px solid var(--line) }
+.gp-kind__pet { display: flex; align-items: flex-end; justify-content: center; height: 96px; padding-bottom: 6px;
+  background: linear-gradient(transparent calc(100% - 9px), var(--ground) 0) }
+.gp-kind .gp-pet { --ps: 2 }
+@media (min-width: 840px) { .gp-kind .gp-pet { --ps: 3 } .gp-kind__pet { height: 128px } }
+@media (min-width: 1060px) { .gp-kind .gp-pet { --ps: 4 } .gp-kind__pet { height: 164px } }
+.gp-kind h4 { margin: var(--sp-3) 0 var(--sp-1); font-size: var(--fs-1) }
+.gp-kind p { font-size: var(--fs--1) }
+.gp-kinds__note { margin: var(--sp-4) 0 0; color: var(--ink-soft) }
+
+/* garden tiles + gallery thumbs: a 320 px grid (3 + 2 on desktop) */
+.gp-tiles, .gp-thumbs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-5) var(--sp-4); margin: 0; padding: 0; list-style: none }
+@media (min-width: 720px) { .gp-tiles, .gp-thumbs { grid-template-columns: repeat(2, 326px); gap: var(--sp-5) } }
+@media (min-width: 1060px) { .gp-tiles, .gp-thumbs { grid-template-columns: repeat(3, 326px); gap: var(--sp-5) var(--sp-6); justify-content: center } }
+.gp-tile img { display: block; width: 100%; max-width: 320px; height: auto; margin: 3px; box-shadow: 0 0 0 3px var(--line) }
+.gp-tile h3 { margin: var(--sp-3) 0 var(--sp-1); font-size: var(--fs-0) }
+@media (min-width: 720px) { .gp-tile h3 { font-size: var(--fs-1) } }
+.gp-tile p { color: var(--ink-soft) }
+.gp-gallery__hint { margin: var(--sp-3) 0 var(--sp-5); color: var(--ink-soft) }
+.gp-thumb { display: block; line-height: 0; margin: 3px; box-shadow: 0 0 0 3px var(--line) }
+.gp-thumb img { display: block; width: 100%; max-width: 320px; height: auto } /* half-scale thumbs: smooth on purpose */
+.gp-thumb:hover { box-shadow: 0 0 0 3px var(--line), 4px 6px 0 3px var(--shadow) }
+.gp-thumb:focus-visible { outline-offset: 6px }
+
+/* lightbox (built by game.js) */
+.gp-lightbox { max-width: none; max-height: none; padding: 0; border: 0; background: transparent; color: #fff }
+.gp-lightbox::backdrop { background: rgb(13 9 18 / .9) }
+.gp-lightbox__in { display: grid; gap: var(--sp-3); justify-items: center; padding: var(--sp-4) }
+.gp-lightbox img { display: block; width: min(640px, calc(100vw - 32px)); height: auto; box-shadow: 0 0 0 3px #fff }
+@media (min-width: 672px) { .gp-lightbox img { image-rendering: pixelated } }
+@media (min-width: 1320px) and (min-height: 860px) { .gp-lightbox img { width: 1280px } }
+.gp-lightbox p { margin: 0; text-align: center; font-weight: 700 }
+.gp-lightbox__bar { display: flex; flex-wrap: wrap; gap: var(--sp-3); justify-content: center }
+.gp-lightbox .btn--ghost { color: #fff; --o: #fff }
+.gp-lightbox .btn--ghost:hover { color: var(--ink) }
+
+/* ---------- grown-ups: two balanced columns, the two screens side by side below ---------- */
+.gp-grownups { background: var(--surface-2) }
+.gp-grownups h2 { margin-top: var(--sp-2) }
+.gp-lede { margin: var(--sp-3) 0 0; max-width: 40em; font-size: var(--fs-1) }
+.gp-promises { display: grid; gap: var(--sp-5) var(--sp-7); margin-top: var(--sp-6) }
+@media (min-width: 840px) { .gp-promises { grid-template-columns: repeat(2, minmax(0, 1fr)) } }
+.gp-promise h3 { font-size: var(--fs-1) }
+.gp-checks { margin: var(--sp-3) 0 0; padding: 0; list-style: none }
+.gp-checks li { position: relative; margin: 0 0 var(--sp-3); padding-left: 30px }
+.gp-checks li::before { /* a 6x5 pixel tick, 3 px per pixel */
+  content: ""; position: absolute; left: 0; top: .3em; width: 18px; height: 15px;
+  background: linear-gradient(var(--ink) 0 0) 0 6px / 3px 3px no-repeat, linear-gradient(var(--ink) 0 0) 3px 9px / 3px 3px no-repeat,
+    linear-gradient(var(--ink) 0 0) 6px 12px / 3px 3px no-repeat, linear-gradient(var(--ink) 0 0) 9px 9px / 3px 3px no-repeat,
+    linear-gradient(var(--ink) 0 0) 12px 6px / 3px 3px no-repeat, linear-gradient(var(--ink) 0 0) 15px 3px / 3px 3px no-repeat,
+    linear-gradient(var(--ink) 0 0) 15px 0 / 3px 3px no-repeat }
+.gp-policy { margin: var(--sp-2) 0 0; font-weight: 700 }
+.gp-grownups__shots { display: grid; gap: var(--sp-5); margin-top: var(--sp-6) }
+@media (min-width: 840px) { .gp-grownups__shots { grid-template-columns: repeat(2, minmax(0, 1fr)) } }
+
+/* ---------- coming soon ---------- */
+.gp-soonbox__in { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-5) var(--sp-6); padding: var(--sp-5) var(--sp-6); background: var(--accent-soft) }
+.gp-soonbox__text { flex: 1 1 320px; min-width: 0 }
+.gp-soonbox__in p { margin-top: var(--sp-3); max-width: 42em }
+.gp-soonbox__small { font-size: var(--fs--1) }
+.gp-soonbox__pet { flex: none; line-height: 0 }
+.gp-pet--soon { --ps: 3 }
+
+/* ---------- press ---------- */
+.gp-press { padding-top: 0 }
+.gp-press__in { display: grid; gap: var(--sp-4) var(--sp-7); align-items: start }
+@media (min-width: 840px) { .gp-press__in { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) } }
+.gp-press p { margin-top: var(--sp-3) }
+.gp-downloads { margin: 0; padding-left: 1.2em }
+@media (min-width: 840px) { .gp-downloads { margin-top: 44px } }
+.gp-downloads li { margin: 2px 0 }
+.gp-downloads a { display: inline-block; padding: 8px 0 }
+
+/* ---------- footer extra line ---------- */
+.gp-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 0 var(--sp-5) }
+.gp-foot__langs { display: flex; flex-wrap: wrap; gap: 0 var(--sp-4) }
+.gp-foot__langs a[aria-current="page"] { font-weight: 800; text-decoration: none }
+.gp-media-stack { display: grid; gap: var(--sp-5); min-width: 0 }
+@media (max-width: 1059px) { .gp-media-stack > .gp-media + .gp-media { display: none } } /* the 2nd picture only balances the desktop column */
+
+/* ---------- game privacy policy pages (/<game>/privacy/) ---------- */
+.gp-policy-band { background: var(--sky-2); border-bottom: 3px solid var(--line) }
+.gp-policy-band__in { display: flex; flex-direction: column; align-items: center; padding-bottom: var(--sp-5) }
+.gp-policy-logo { display: block; line-height: 0; margin-top: var(--sp-2) }
+.gp-policy-logo img { width: 272px; height: auto; image-rendering: pixelated }
+.gp-policy { padding-top: var(--sp-6) }
+.gp-policy .prose { max-width: 44em; margin: 0 auto; font-size: var(--fs-0) }
+.gp-policy .prose h2 { margin: var(--sp-6) 0 var(--sp-2); font-family: var(--font-body); font-weight: 800; font-size: var(--fs-2); line-height: 1.3; letter-spacing: 0 } /* long legal headings read better in the body face */
+.gp-policy h1 { margin: 0 0 var(--sp-3) }
+.gp-policy .meta { margin: 0 0 var(--sp-3); color: var(--ink-soft); font-size: var(--fs--1) }
+.gp-policy .short { margin: var(--sp-5) 0; padding: var(--sp-4) var(--sp-5); background: var(--accent-soft); border: 3px solid var(--line) }
+.gp-policy p { margin: 0 0 var(--sp-4) }
+.gp-policy code { padding: 0 4px; background: var(--surface-2); border: 1px solid var(--line); overflow-wrap: anywhere; font-size: .92em }
+.gp-policy__back { max-width: 44em; margin: var(--sp-6) auto 0; font-weight: 700 }
+.gp-grownups + .section { padding-top: var(--sp-7) } /* site.css collapses .section + .section; the band needs air */
+p.gp-policy a, .gp-policy__back a, .gp-feature .gp-prose a { display: inline-block; padding: 10px 0 } /* standalone links: 44 px tall targets */

@@ -2,60 +2,69 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self'; media-src 'self'; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f6f0e4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1b1524" media="(prefers-color-scheme: dark)">
 <title>Privacy - Box United</title>
 <meta name="description" content="Privacy policies for Box United games, and how this website handles your data (it doesn't).">
 <link rel="canonical" href="https://boxunitedgames.com/privacy/">
-<link rel="icon" href="../img/box.svg" type="image/svg+xml">
-<link rel="icon" href="../img/box-180.png" type="image/png">
-<style>
-  :root { --bg: #f3efe6; --panel: #ffffff; --ink: #2f2540; --muted: #6b6280; --link: #c2185b;
-          --edge: #2f2540; --shadow: #2f2540; --wood: #c98d52; --wood-hi: #e8b77d; --wood-lo: #8f5f33; --pink: #e8457f; --blush: #ffd1e0; }
-  @media (prefers-color-scheme: dark) {
-    :root { --bg: #1a1610; --panel: #241f18; --ink: #f2ece2; --muted: #b3a894; --link: #ff8fb5;
-            --edge: #5a4d3c; --shadow: #000000; --wood: #d39a5e; --wood-hi: #f0c48c; --wood-lo: #9c6a3b; --pink: #ff6f9f; --blush: #ffd1e0; }
-  }
-  * { box-sizing: border-box }
-  html { background: var(--bg) }
-  body { margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif }
-  .wrap { max-width: 720px; margin: 0 auto; padding: 32px 16px 40px }
-  a { color: var(--link) }
-  .home { display: inline-flex; gap: 10px; align-items: center; color: var(--ink); text-decoration: none; font-weight: 700 }
-  .logo { width: 40px; height: 40px; flex: none }
-  .logo .k { fill: var(--ink) } .logo .w { fill: var(--wood) } .logo .l { fill: var(--wood-hi) }
-  .logo .d { fill: var(--wood-lo) } .logo .p { fill: var(--pink) } .logo .h { fill: var(--blush) }
-  main { margin-top: 20px; padding: 22px 22px 26px; background: var(--panel); border: 3px solid var(--edge); box-shadow: 6px 6px 0 var(--shadow) }
-  h1 { margin: 0 0 8px; font-size: 1.8em; line-height: 1.2 }
-  h2 { margin: 1.4em 0 0.4em; font-size: 1.15em }
-  ul { padding-left: 1.2em }
-  li { margin: 0.35em 0 }
-  .muted { color: var(--muted) }
-  footer { margin-top: 18px; color: var(--muted); font-size: 0.9em }
-</style>
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/brand/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/box-pixel-v1.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/brand.css">
+<link rel="stylesheet" href="/assets/css/site.css">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Box United">
+<meta property="og:title" content="Privacy - Box United">
+<meta property="og:description" content="Privacy policies for Box United games, and how this website handles your data (it doesn't).">
+<meta property="og:url" content="https://boxunitedgames.com/privacy/">
+<meta property="og:image" content="https://boxunitedgames.com/assets/brand/og-studio.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Box United logo and the line Cozy little games made with care, above an open pixel toy box with four Petbox pets on the grass">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image:alt" content="Box United logo and the line Cozy little games made with care, above an open pixel toy box with four Petbox pets on the grass">
 </head>
 <body>
-<div class="wrap">
-  <a class="home" href="../"><svg class="logo" viewBox="0 0 16 16" width="96" height="96" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect class="p" x="5" y="2" width="2" height="1"/><rect class="p" x="9" y="2" width="2" height="1"/><rect class="p" x="4" y="3" width="1" height="1"/><rect class="h" x="5" y="3" width="1" height="1"/><rect class="p" x="6" y="3" width="6" height="1"/><rect class="p" x="4" y="4" width="8" height="1"/><rect class="k" x="1" y="5" width="2" height="1"/><rect class="p" x="5" y="5" width="6" height="1"/><rect class="k" x="13" y="5" width="2" height="1"/><rect class="k" x="1" y="6" width="1" height="1"/><rect class="w" x="2" y="6" width="1" height="1"/><rect class="k" x="3" y="6" width="1" height="1"/><rect class="p" x="6" y="6" width="4" height="1"/><rect class="k" x="12" y="6" width="1" height="1"/><rect class="w" x="13" y="6" width="1" height="1"/><rect class="k" x="14" y="6" width="1" height="1"/><rect class="k" x="2" y="7" width="1" height="1"/><rect class="w" x="3" y="7" width="1" height="1"/><rect class="k" x="4" y="7" width="1" height="1"/><rect class="p" x="7" y="7" width="2" height="1"/><rect class="k" x="11" y="7" width="1" height="1"/><rect class="w" x="12" y="7" width="1" height="1"/><rect class="k" x="13" y="7" width="1" height="1"/><rect class="k" x="2" y="8" width="12" height="1"/><rect class="k" x="2" y="9" width="1" height="1"/><rect class="l" x="3" y="9" width="10" height="1"/><rect class="k" x="13" y="9" width="1" height="1"/><rect class="k" x="2" y="10" width="1" height="1"/><rect class="w" x="3" y="10" width="10" height="1"/><rect class="k" x="13" y="10" width="1" height="1"/><rect class="k" x="2" y="11" width="1" height="1"/><rect class="w" x="3" y="11" width="4" height="1"/><rect class="k" x="7" y="11" width="2" height="1"/><rect class="w" x="9" y="11" width="4" height="1"/><rect class="k" x="13" y="11" width="1" height="1"/><rect class="k" x="2" y="12" width="1" height="1"/><rect class="w" x="3" y="12" width="10" height="1"/><rect class="k" x="13" y="12" width="1" height="1"/><rect class="k" x="2" y="13" width="1" height="1"/><rect class="w" x="3" y="13" width="10" height="1"/><rect class="k" x="13" y="13" width="1" height="1"/><rect class="k" x="2" y="14" width="1" height="1"/><rect class="d" x="3" y="14" width="10" height="1"/><rect class="k" x="13" y="14" width="1" height="1"/><rect class="k" x="2" y="15" width="12" height="1"/></svg> Box United</a>
-  <main>
-    <h1>Privacy</h1>
-    <p>Each Box United game has its own privacy policy:</p>
-    <ul>
-      <li><strong>Petbox</strong>: <a href="../petbox/privacy/">English</a> ·
-        <a href="../petbox/privacy/es/" hreflang="es" lang="es">Español</a> ·
-        <a href="../petbox/privacy/pt-br/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></li>
-    </ul>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head"><div class="site-head__in">
+  <a class="brand" href="/"><img src="/assets/brand/logo.svg" alt="" width="32" height="32"><span>Box United</span></a>
+  <nav class="site-nav" aria-label="Main"><a href="/#games">Games</a><a href="/#about">About</a><a href="/press/">Press</a><a href="/#contact">Contact</a></nav>
+</div></header>
 
-    <h2>This website</h2>
-    <p>boxunitedgames.com sets no cookies and uses no analytics, ads or trackers. It is a
-      plain static website hosted on GitHub Pages; GitHub may keep standard server logs
-      (such as IP addresses) to run and protect the service, as described in
-      <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a>.</p>
+<main id="main">
+  <div class="wrap">
+    <div class="page-head">
+      <h1 class="page-title">Privacy</h1>
+    </div>
+    <div class="prose">
+      <p>Each Box United game has its own privacy policy:</p>
+      <ul>
+        <li><strong>Petbox</strong>: <a href="/petbox/privacy/">English</a> ·
+          <a href="/petbox/privacy/es/" hreflang="es" lang="es">Español</a> ·
+          <a href="/petbox/privacy/pt-br/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></li>
+      </ul>
 
-    <h2>Contact</h2>
-    <p>Questions about privacy: <a href="mailto:support@boxunitedgames.com">support@boxunitedgames.com</a></p>
-  </main>
-  <footer>&copy; 2026 Box United</footer>
-</div>
+      <h2>This website</h2>
+      <p>boxunitedgames.com sets no cookies, uses no local storage and has no analytics, ads or
+        trackers. It has no accounts or forms, and it loads nothing from other websites: every file
+        comes from boxunitedgames.com. It is a plain static website hosted on GitHub Pages; GitHub may
+        keep standard server logs (such as IP addresses) to run and protect the service, as described in
+        <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a>.</p>
+
+      <h2>Contact</h2>
+      <p>Questions about privacy: <a href="mailto:support@boxunitedgames.com">support@boxunitedgames.com</a></p>
+    </div>
+  </div>
+</main>
+
+<footer class="site-foot"><div class="site-foot__in">
+  <span>&copy; 2026 Box United</span><a href="/privacy/" aria-current="page">Privacy</a><a href="/press/">Press</a><a href="mailto:support@boxunitedgames.com">support@boxunitedgames.com</a><span>No cookies, no trackers.</span>
+</div></footer>
 </body>
 </html>

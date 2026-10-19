@@ -1,73 +1,214 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-game="petbox">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Petbox - Cozy Pixel Pet Garden</title>
-<meta name="description" content="Petbox: hatch, raise and race tiny pixel pets in cozy gardens that grow with you. By Box United.">
-<link rel="icon" href="img/icon.png">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self'; media-src 'self'; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#6fc3f0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1d2a52" media="(prefers-color-scheme: dark)">
+<title>Petbox: a cozy pixel pet garden | Box United</title>
+<meta name="description" content="Hatch, raise and race tiny pixel pets in five cozy gardens. No ads, no accounts, no data collection. Coming soon to Google Play.">
 <link rel="canonical" href="https://boxunitedgames.com/petbox/">
 <link rel="alternate" hreflang="en" href="https://boxunitedgames.com/petbox/">
 <link rel="alternate" hreflang="es" href="https://boxunitedgames.com/petbox/es/">
 <link rel="alternate" hreflang="pt-BR" href="https://boxunitedgames.com/petbox/pt-br/">
 <link rel="alternate" hreflang="x-default" href="https://boxunitedgames.com/petbox/">
-<style>
-  :root { --bg: #f3efe6; --panel: #ffffff; --ink: #2f2540; --muted: #6b6280; --wood: #b07a45; --pink: #e8457f; }
-  @media (prefers-color-scheme: dark) { :root { --bg: #1a1610; --panel: #241f18; --ink: #f2ece2; --muted: #b3a894; --wood: #d39a5e; --pink: #ff6f9f; } }
-  * { box-sizing: border-box }
-  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif }
-  .wrap { max-width: 980px; margin: 0 auto; padding: 32px max(16px, env(safe-area-inset-left)) 48px }
-  header { display: flex; gap: 20px; align-items: center; flex-wrap: wrap }
-  header img { width: 96px; height: 96px; image-rendering: pixelated; border-radius: 22px }
-  h1 { margin: 0; font-size: clamp(32px, 6vw, 48px); line-height: 1.1 }
-  .tag { color: var(--muted); margin: 6px 0 0 }
-  .feature { width: 100%; border-radius: 12px; margin: 28px 0; image-rendering: pixelated; display: block }
-  .shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px }
-  .shots img { width: 100%; border-radius: 8px; image-rendering: pixelated; display: block }
-  ul { padding-left: 20px }
-  .note { background: var(--panel); border-radius: 10px; padding: 14px 18px; margin-top: 24px }
-  footer { margin-top: 36px; color: var(--muted); font-size: 14px; display: flex; gap: 18px; flex-wrap: wrap }
-  a { color: var(--pink) }
-  .lang { text-align: right; font-size: 14px; margin: 0 0 12px }
-  .lang a { color: var(--ink) }
-</style>
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/brand/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Box United">
+<meta property="og:title" content="Petbox: a cozy pixel pet garden">
+<meta property="og:description" content="Hatch, raise and race tiny pixel pets in five cozy gardens. No ads, no accounts, no data collection. Coming soon to Google Play.">
+<meta property="og:url" content="https://boxunitedgames.com/petbox/">
+<meta property="og:image" content="https://boxunitedgames.com/petbox/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Petbox logo, a wooden toy box with Hazel the toymaker mole peeking out, and four pixel pets on the grass">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="es_LA">
+<meta property="og:locale:alternate" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Petbox: a cozy pixel pet garden">
+<meta name="twitter:description" content="Hatch, raise and race tiny pixel pets in five cozy gardens. No ads, no accounts, no data collection. Coming soon to Google Play.">
+<meta name="twitter:image" content="https://boxunitedgames.com/petbox/img/og.png">
+<meta name="twitter:image:alt" content="The Petbox logo, a wooden toy box with Hazel the toymaker mole peeking out, and four pixel pets on the grass">
+<link rel="preload" href="/assets/fonts/box-pixel-v1.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/brand.css">
+<link rel="stylesheet" href="/assets/css/themes/petbox.css">
+<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/assets/css/game.css">
+<script src="/assets/js/sprites.js" defer></script>
+<script src="/assets/sprites/petbox/index.js" defer></script>
+<script src="/assets/js/site.js" defer></script>
+<script src="/assets/js/game.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"Petbox","url":"https://boxunitedgames.com/petbox/","description":"Hatch, raise and race tiny pixel pets in five cozy gardens. No ads, no accounts, no data collection. Coming soon to Google Play.","image":"https://boxunitedgames.com/petbox/img/og.png","genre":["Virtual pet","Simulation","Casual"],"gamePlatform":"Android","applicationCategory":"Game","operatingSystem":"Android","inLanguage":["en","es","pt-BR"],"author":{"@type":"Organization","name":"Box United","url":"https://boxunitedgames.com/"},"publisher":{"@type":"Organization","name":"Box United","url":"https://boxunitedgames.com/"},"trailer":{"@type":"VideoObject","name":"Petbox trailer","description":"An egg hatches, pets play on swings and seesaws, the gardens change with the seasons and holidays, and an old friend reblooms into a Divine form.","thumbnailUrl":"https://boxunitedgames.com/petbox/media/petbox-cozy-v1.png","contentUrl":"https://boxunitedgames.com/petbox/media/petbox-cozy-v1.mp4","uploadDate":"2026-10-19","duration":"PT36S"}}</script>
 </head>
 <body>
-<div class="wrap">
-  <nav class="lang" aria-label="Language"><strong>English</strong> · <a href="es/" hreflang="es" lang="es">Español</a> · <a href="pt-br/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></nav>
-  <header>
-    <img src="img/icon.png" alt="Petbox app icon: Hazel the toymaker mole in a toy box">
-    <div>
-      <h1>Petbox</h1>
-      <p class="tag">A cozy pixel pet garden by Box United. Coming soon to Google Play.</p>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head"><div class="site-head__in">
+  <a class="brand" href="/"><img src="/assets/brand/logo.svg" alt="" width="32" height="32"><span>Box United</span></a>
+  <nav class="site-nav" aria-label="Main"><a href="/#games">Games</a><a href="/#about">About</a><a href="/press/">Press</a><a href="/#contact">Contact</a></nav>
+</div></header>
+<main id="main" style="--still:url(/petbox/img/cast-still-6b89a0ae.png);--sw:203;--sh:39">
+<section class="gp-hero" aria-labelledby="gp-title">
+  <div class="wrap gp-hero__in">
+    <nav class="gp-langs" aria-label="Language"><a href="/petbox/" hreflang="en" lang="en" aria-current="page">English</a><a href="/petbox/es/" hreflang="es" lang="es">Español</a><a href="/petbox/pt-br/" hreflang="pt-BR" lang="pt-BR">Português</a></nav>
+    <h1 id="gp-title" class="gp-logo"><img src="/petbox/img/logo.png" width="272" height="122" alt="Petbox"></h1>
+    <p class="gp-hero__tag">Hatch, raise and race tiny pixel pets in cozy gardens that grow with you.</p>
+    <div class="gp-hero__actions">
+      <a class="btn btn--primary gp-cta" href="#trailer" data-play="trailer"><svg viewBox="0 0 8 8" width="16" height="16" aria-hidden="true" focusable="false"><path d="M2 1h1v1h1v1h1v1h1v1H5v1H4v1H3v1H2z"/></svg><span>Watch the trailer</span></a>
+      <p class="gp-soon">Coming soon to Google Play · Android</p>
     </div>
-  </header>
-
-  <img class="feature" src="img/feature.png" alt="Petbox logo with Hazel and a group of pixel pets in a garden">
-
-  <p>Hatch, raise and race tiny pixel pets in cozy gardens that grow with you.</p>
-  <ul>
-    <li>Four species, seven hybrids, rare Mystic looks and divine forms</li>
-    <li>Five gardens with real-calendar seasons and holidays</li>
-    <li>Races, dojo training, mini-games and weekend festivals</li>
-    <li>Friend codes, a Friendship Plaza and local Wi-Fi play together</li>
-    <li>Hazel's Workshop for statues, recolors and garden expansions</li>
-  </ul>
-
-  <div class="shots">
-    <img src="img/01_cozy_oasis.png" alt="Cozy Oasis garden with pets and the Glimmer Tree">
-    <img src="img/02_divine.png" alt="Divine forms and Mystic pets in Moon Hollow">
-    <img src="img/04_cloud_isle.png" alt="Cloud Isle floating garden in spring">
-    <img src="img/07_hybrids.png" alt="All seven hybrid pets in Sunny Glade">
+    <p class="gp-hero__facts">No ads · No accounts · Plays offline</p>
   </div>
+  <div class="gp-yard">
+    <div class="gp-yard__cast" aria-hidden="true">
+      <span class="gp-pet" style="--w:25;--h:37;--ay:35;--fx:0;--gap:0"><canvas class="sprite" data-sprite="petbox/glimmling" data-seq="idle,wave,idle*2,hop" data-tap="hop" data-offset="900" width="25" height="37" aria-hidden="true"></canvas></span>
+      <span class="gp-pet gp-pet--flip" style="--w:26;--h:30;--ay:28;--fx:26;--gap:-3"><canvas class="sprite" data-sprite="petbox/puffling" data-seq="idle,hop,idle*2,wave" data-tap="hop" data-offset="2600" data-flip width="26" height="30" aria-hidden="true"></canvas></span>
+      <span class="gp-pet gp-pet--wide" style="--w:37;--h:31;--ay:27;--fx:53;--gap:40"><canvas class="sprite" data-sprite="petbox/hazel" data-seq="idle*2,wave,idle*3,cheer" data-tap="cheer" width="37" height="31" aria-hidden="true"></canvas></span>
+      <span class="gp-pet gp-pet--wide" style="--w:47;--h:39;--ay:29;--fx:91;--gap:-10"><canvas class="sprite" data-sprite="petbox/egg" data-anim="wobble" data-tap="wobble" width="47" height="39" aria-hidden="true"></canvas></span>
+      <span class="gp-pet" style="--w:35;--h:35;--ay:31;--fx:139;--gap:36"><canvas class="sprite" data-sprite="petbox/drakelet" data-seq="idle*2,hop,idle,cheer" data-tap="hop" data-offset="2300" width="35" height="35" aria-hidden="true"></canvas></span>
+      <span class="gp-pet gp-pet--flip" style="--w:28;--h:30;--ay:27;--fx:175;--gap:-2"><canvas class="sprite" data-sprite="petbox/gillby" data-seq="idle*2,wave,idle,hop" data-tap="hop" data-offset="400" data-flip width="28" height="30" aria-hidden="true"></canvas></span>
+    </div>
+    <div class="gp-yard__soil"><div class="wrap gp-yard__in">
+      <p class="gp-yard__hint" hidden>Tap a pet to say hi.</p>
+      <button class="gp-motion" type="button" aria-pressed="false" hidden><svg class="ic-pause" viewBox="0 0 4 4" aria-hidden="true" focusable="false"><path d="M0 0h1v4H0zM3 0h1v4H3z"/></svg><svg class="ic-play" viewBox="0 0 4 4" aria-hidden="true" focusable="false"><path d="M0 0h1v1h1v1h1v1H2v1H1V4H0z"/></svg><span class="sr-only">Pause the pets</span></button>
+    </div></div>
+  </div>
+</section>
+<section class="gp-trailer" id="trailer" aria-labelledby="trailer-h">
+  <div class="wrap gp-trailer__in">
+    <h2 id="trailer-h" class="sr-only">Petbox trailer</h2>
+    <figure class="gp-trailer__fig">
+      <div class="gp-video pixel-frame"><video id="gp-trailer-video" controls muted playsinline preload="none" width="1280" height="720" poster="/petbox/media/petbox-cozy-v1.png" aria-describedby="gp-trailer-cap"><source src="/petbox/media/petbox-cozy-v1.mp4" type="video/mp4"></video><button class="gp-video__play" type="button" data-video="gp-trailer-video" hidden><svg viewBox="0 0 8 8" width="32" height="32" aria-hidden="true" focusable="false"><path d="M2 1h1v1h1v1h1v1h1v1H5v1H4v1H3v1H2z"/></svg><span class="sr-only">Play the trailer</span></button></div>
+      <figcaption id="gp-trailer-cap" class="gp-cap"><strong>Trailer, 36 seconds:</strong> an egg hatches, pets play on swings and seesaws, the gardens change with the seasons, and an old friend reblooms into a Divine form. It starts muted; turn the sound on in the player for the music. <a href="/petbox/media/petbox-cozy-v1.mp4" download>Download (MP4, 2.0 MB)</a></figcaption>
+    </figure>
+  </div>
+</section>
 
-  <div class="note">No ads. No accounts. No data collection. Your garden stays on your device.</div>
+<section class="section gp-feature" id="raise" aria-labelledby="raise-h" data-reveal>
+  <div class="wrap gp-feature__in">
+    <div class="gp-feature__text">
+      <h2 id="raise-h">Hatch a new friend</h2>
+      <div class="gp-prose">
+        <p>Hatch a Glimmling, a Drakelet, a Puffling or a Gillby, give it a name and make it feel at home. Rub its head, shake fruit from the trees and watch its personality show: some swing and nap, some kick the ball around, some splash in the pond or toast marshmallows by the campfire. Look after your pets and they'll greet you, learn tricks and make best friends.</p>
+        <h3>Care shapes who they become</h3>
+        <p>Kindness makes a pet Sunny; a little mischief makes it Moony. Sea Melons grow Splash, Sky Berries grow Soar, Dash Peppers grow Dash and Rock Nuts grow Might. When a pet grows up, it curls into a seed pod and blooms into a new form chosen by its stats and its nature. Raise it with lots of love and it may become Radiant.</p>
+        <h3>Hybrids, Mystic and Divine</h3>
+        <p>Pair two different kinds to hatch one of seven hybrids, from the horned Glimwyrm to the bubbly Bubblepuff. Lucky eggs hatch into five glowing Mystic lines. When an old friend has lived a full life, it visits the Glimmer Tree and reblooms as a new egg that keeps its name and memories. A deeply loved Radiant pet of the fourth generation can even take a Divine form.</p>
+        <h3>Something every day</h3>
+        <p>Pip, your garden guide, tells you what your pets got up to while you were away, and small daily quests, pet wishes, letters in the mailbox, hatch-day parties and Nana Bramble's Daycare give every visit something to look forward to.</p>
+      </div>
+    </div>
+    <div class="gp-media-stack"><figure class="gp-media"><div class="pixel-frame gp-media__frame"><img class="gp-art" src="/petbox/img/shots/en/09-seed-pod.png" width="640" height="360" alt="The Cozy Oasis with a pink seed pod in the grass: a pet is about to bloom into its new form" loading="lazy" decoding="async"></div><figcaption class="gp-cap">A seed pod, just before it blooms</figcaption></figure><figure class="gp-media"><div class="pixel-frame gp-media__frame"><img class="gp-art" src="/petbox/img/shots/en/02-divine.png" width="640" height="360" alt="Moon Hollow at night with the four Divine forms and glowing Mystic pets" loading="lazy" decoding="async"></div><figcaption class="gp-cap">Divine and Mystic pets in Moon Hollow</figcaption></figure></div>
+    <div class="gp-kinds"><h3 class="gp-kinds__title">Meet the four kinds</h3><ul class="gp-kinds__list"><li class="gp-kind"><div class="gp-kind__pet" aria-hidden="true"><span class="gp-pet" style="--w:25;--h:37;--ay:35;--fx:0"><canvas class="sprite" data-sprite="petbox/glimmling" data-anim="idle" data-tap="hop" width="25" height="37" aria-hidden="true"></canvas></span></div><h4>Glimmling</h4><p>Hatches from a Glim Egg, with a little sprout on top.</p></li><li class="gp-kind"><div class="gp-kind__pet" aria-hidden="true"><span class="gp-pet" style="--w:35;--h:35;--ay:31;--fx:139"><canvas class="sprite" data-sprite="petbox/drakelet" data-anim="idle" data-tap="hop" width="35" height="35" aria-hidden="true"></canvas></span></div><h4>Drakelet</h4><p>A tiny dragon from a Drake Egg, with a warm little flame.</p></li><li class="gp-kind"><div class="gp-kind__pet" aria-hidden="true"><span class="gp-pet" style="--w:26;--h:30;--ay:28;--fx:26"><canvas class="sprite" data-sprite="petbox/puffling" data-anim="idle" data-tap="hop" width="26" height="30" aria-hidden="true"></canvas></span></div><h4>Puffling</h4><p>Hatches from a Cloud Egg. It floats, and loves Cloud Isle.</p></li><li class="gp-kind"><div class="gp-kind__pet" aria-hidden="true"><span class="gp-pet" style="--w:28;--h:30;--ay:27;--fx:175"><canvas class="sprite" data-sprite="petbox/gillby" data-anim="idle" data-tap="hop" width="28" height="30" aria-hidden="true"></canvas></span></div><h4>Gillby</h4><p>Hatches from a Bubble Egg. A pond lover whose home is the Coral Reef.</p></li></ul><p class="gp-kinds__note">Each kind has 29 forms to find in your Field Journal. Tap a pet to make it hop.</p></div>
+  </div>
+</section>
 
-  <footer>
-    <a href="privacy/">Privacy policy</a>
-    <span>Contact: <a href="mailto:support@boxunitedgames.com">support@boxunitedgames.com</a></span>
-    <span>&copy; 2026 <a href="../">Box United</a></span>
-  </footer>
-</div>
+<section class="section gp-feature gp-feature--wide" id="gardens" aria-labelledby="gardens-h" data-reveal>
+  <div class="wrap gp-feature__in">
+    <div class="gp-feature__text">
+      <h2 id="gardens-h">Five cozy gardens</h2>
+      <div class="gp-prose">
+        <p>Start in the Cozy Oasis, then open the warm Sunny Glade, the lantern-lit Moon Hollow, the floating Cloud Isle and the underwater Coral Reef, each with its own trees, fruit and music. Day turns to night with your clock and the weather changes. The real seasons bring spring blossoms, autumn leaves and winter snow, and holidays bring special eggs such as the Pumpkling and the Frostling.</p>
+      </div>
+    </div>
+    <ul class="gp-tiles"><li class="gp-tile"><img class="gp-art" src="/petbox/img/gardens/cozy-oasis.png" width="320" height="180" alt="Cozy Oasis in autumn: a Glimmling under the golden Glimmer Tree and a Gillby in the pond" loading="lazy" decoding="async"><h3>Cozy Oasis</h3><p>Where every garden story begins.</p></li><li class="gp-tile"><img class="gp-art" src="/petbox/img/gardens/sunny-glade.png" width="320" height="180" alt="Sunny Glade in summer: hybrid pets around a round pond on warm stone tiles" loading="lazy" decoding="async"><h3>Sunny Glade</h3><p>Warm stone paths and sunny days.</p></li><li class="gp-tile"><img class="gp-art" src="/petbox/img/gardens/moon-hollow.png" width="320" height="180" alt="Moon Hollow at night: glowing Divine pets beside a lantern and a violet pond" loading="lazy" decoding="async"><h3>Moon Hollow</h3><p>Lanterns, crystals and starry nights.</p></li><li class="gp-tile"><img class="gp-art" src="/petbox/img/gardens/cloud-isle.png" width="320" height="180" alt="Cloud Isle in spring: a blossom tree on the clouds and pets by a cloud pond" loading="lazy" decoding="async"><h3>Cloud Isle</h3><p>A garden floating above the clouds.</p></li><li class="gp-tile"><img class="gp-art" src="/petbox/img/gardens/coral-reef.png" width="320" height="180" alt="Coral Reef: pets float over the sand near a kelp tree and a coral lagoon" loading="lazy" decoding="async"><h3>Coral Reef</h3><p>Under the sea, every pet floats.</p></li></ul>
+    
+  </div>
+</section>
+
+<section class="section gp-feature gp-feature--flip" id="play" aria-labelledby="play-h" data-reveal>
+  <div class="wrap gp-feature__in">
+    <div class="gp-feature__text">
+      <h2 id="play-h">Race, train, show off</h2>
+      <div class="gp-prose">
+        <p>Earn belts in the Dojo with a training partner, then race over hurdles, through pools, off gliding cliffs and up climbing walls, from the Sprout Cup all the way to the Star League. Try the Cup of the Week, beat your best times and bonk your way through the Tumble Ring.</p>
+        <p>Every weekend the Garden Festival opens with the Charm Contest and the Cozy Contest, where three judges score the decor you arrange. Put a band of pets on stage at the Talent Show, with a new theme each week. Need a break? Play Pond Fishing, Fruit Catch or Hide-and-Seek.</p>
+        <p><a href="/petbox/media/petbox-trailer-v1.mp4">Watch the 32-second gameplay trailer</a> (MP4).</p>
+      </div>
+    </div>
+    <figure class="gp-media"><div class="pixel-frame gp-media__frame gp-loop"><video id="gp-loop-race" class="gp-art" muted loop playsinline preload="none" disablepictureinpicture width="640" height="360" poster="/petbox/media/loops/race-v1.png" aria-label="Race clip, no sound"><source src="/petbox/media/loops/race-v1.mp4" type="video/mp4"></video><button class="gp-loop__btn" type="button" aria-controls="gp-loop-race" aria-pressed="false" hidden ><svg class="ic-pause" viewBox="0 0 4 4" aria-hidden="true" focusable="false"><path d="M0 0h1v4H0zM3 0h1v4H3z"/></svg><svg class="ic-play" viewBox="0 0 4 4" aria-hidden="true" focusable="false"><path d="M0 0h1v1h1v1h1v1H2v1H1V4H0z"/></svg><span class="sr-only">Pause the clip</span></button></div><figcaption class="gp-cap">A race in the Star Cup: off the cliff, through the rings, first over the line.</figcaption></figure>
+    
+  </div>
+</section>
+
+<section class="section gp-feature" id="friends" aria-labelledby="friends-h" data-reveal>
+  <div class="wrap gp-feature__in">
+    <div class="gp-feature__text">
+      <h2 id="friends-h">Friends near and far</h2>
+      <div class="gp-prose">
+        <p>Visit the Friendship Plaza, where the town's gardeners drop by with their pets to race, play and swap little gifts. Share short codes with friends to send a pet on a Garden Postcard, show off your garden, trade pets or race a friend's ghost.</p>
+        <p>On the same Wi-Fi? Play Together lets two phones share one garden: toss the ball, send emotes and fill a fruit basket side by side. It only uses your home Wi-Fi, never the internet.</p>
+      </div>
+    </div>
+    <figure class="gp-media"><div class="pixel-frame gp-media__frame"><img class="gp-art" src="/petbox/img/shots/en/05-plaza.png" width="640" height="360" alt="The Friendship Plaza: your pets and the town gardeners&#x27; pets around a fountain" loading="lazy" decoding="async"></div><figcaption class="gp-cap">Friends visiting the Friendship Plaza</figcaption></figure>
+    
+  </div>
+</section>
+
+<section class="section gp-feature gp-feature--flip" id="hazel" aria-labelledby="hazel-h" data-reveal>
+  <div class="wrap gp-feature__in">
+    <div class="gp-feature__text">
+      <div class="gp-badge" aria-hidden="true"><span class="gp-pet gp-pet--badge" style="--w:37;--h:31;--ay:27;--fx:53"><canvas class="sprite" data-sprite="petbox/hazel" data-seq="idle*3,hammer" data-tap="cheer" width="37" height="31" aria-hidden="true"></canvas></span></div><h2 id="hazel-h">Help Hazel</h2>
+      <div class="gp-prose">
+        <p>Hazel Burrow, the toymaker mole, builds the swings, fountains and tiny carousels your pets really play on, and carves gold and crystal statues of your favorites in her workshop. One day her magic toy box, the Petbox itself, loses its four parts, and she'll need your help to find them.</p>
+      </div>
+    </div>
+    <figure class="gp-media"><div class="pixel-frame gp-media__frame"><img class="gp-art" src="/petbox/img/shots/en/08-workshop.png" width="640" height="360" alt="Hazel&#x27;s Workshop: Hazel shows off a shining gold statue of a pet" loading="lazy" decoding="async"></div><figcaption class="gp-cap">A gold statue from Hazel&#x27;s Workshop</figcaption></figure>
+    
+  </div>
+</section>
+
+<section class="section gp-gallery" id="screenshots" aria-labelledby="screenshots-h" data-reveal>
+  <div class="wrap">
+    <h2 id="screenshots-h">Screenshots</h2>
+    <p class="gp-gallery__hint">Select a picture to see it bigger.</p>
+    <ul class="gp-thumbs" id="gp-thumbs" data-close="Close" data-prev="Previous picture" data-next="Next picture" data-of="of"><li><a class="gp-thumb" href="/petbox/img/shots/en/01-cozy-oasis.png" data-caption="Cozy Oasis on an autumn morning"><img src="/petbox/img/shots/en/thumbs/01-cozy-oasis.png" width="320" height="180" alt="Pets on the swing, the bench and in the pond around the golden Glimmer Tree in the Cozy Oasis" loading="lazy" decoding="async"></a></li><li><a class="gp-thumb" href="/petbox/img/shots/en/03-race.png" data-caption="Gliding off a cliff in the Star Cup"><img src="/petbox/img/shots/en/thumbs/03-race.png" width="320" height="180" alt="A race: pets glide off a cliff over a pool, and yours is in first place" loading="lazy" decoding="async"></a></li><li><a class="gp-thumb" href="/petbox/img/shots/en/04-cloud-isle.png" data-caption="Cloud Isle in spring"><img src="/petbox/img/shots/en/thumbs/04-cloud-isle.png" width="320" height="180" alt="Cloud Isle in spring: floating blossom islands, a rainbow and pets by a cloud pond" loading="lazy" decoding="async"></a></li><li><a class="gp-thumb" href="/petbox/img/shots/en/06-fishing.png" data-caption="Pond Fishing: a Golden Koi!"><img src="/petbox/img/shots/en/thumbs/06-fishing.png" width="320" height="180" alt="Pond Fishing: a Gillby on a dock lands a Golden Koi" loading="lazy" decoding="async"></a></li><li><a class="gp-thumb" href="/petbox/img/shots/en/07-hybrids.png" data-caption="All seven hybrids in Sunny Glade"><img src="/petbox/img/shots/en/thumbs/07-hybrids.png" width="320" height="180" alt="Sunny Glade in summer with all seven hybrid pets" loading="lazy" decoding="async"></a></li><li><a class="gp-thumb" href="/petbox/img/shots/en/11-coral-reef.png" data-caption="The underwater Coral Reef"><img src="/petbox/img/shots/en/thumbs/11-coral-reef.png" width="320" height="180" alt="The Coral Reef: pets float over the sand by kelp trees, a sunken ship and a lagoon" loading="lazy" decoding="async"></a></li><li><a class="gp-thumb" href="/petbox/img/shots/en/12-talent-show.png" data-caption="A gold ribbon at the Talent Show"><img src="/petbox/img/shots/en/thumbs/12-talent-show.png" width="320" height="180" alt="The Talent Show: a band of pets on stage wins a gold ribbon from the judges" loading="lazy" decoding="async"></a></li><li><a class="gp-thumb" href="/petbox/img/shots/en/13-hatch-day.png" data-caption="A hatch-day party in the Cozy Oasis"><img src="/petbox/img/shots/en/thumbs/13-hatch-day.png" width="320" height="180" alt="A hatch-day party: bunting, a cake table and pets in party hats in the Cozy Oasis" loading="lazy" decoding="async"></a></li><li><a class="gp-thumb" href="/petbox/img/shots/en/14-hazels-story.png" data-caption="The Petbox is whole again!"><img src="/petbox/img/shots/en/thumbs/14-hazels-story.png" width="320" height="180" alt="Hazel cheers next to her magic toy box under a golden star" loading="lazy" decoding="async"></a></li></ul>
+  </div>
+</section>
+
+<section class="section gp-grownups" id="grown-ups" aria-labelledby="grown-ups-h" data-reveal>
+  <div class="wrap">
+    <p class="eyebrow">For grown-ups</p>
+    <h2 id="grown-ups-h">Calm, kind, private</h2>
+    <p class="gp-lede">Petbox is made for kids and families. Here is exactly what that means, in plain words.</p>
+    <div class="gp-promises"><div class="gp-promise"><h3>Calm by design</h3><ul class="gp-checks"><li>Pets rest while you're away: no starving, no punishing timers, nothing lost.</li><li>A daily playtime limit and a bedtime in <strong>Settings &gt; Grown-ups</strong>, behind a grown-up check. Both are off until you turn them on. When time is up, the pets yawn and tuck into bed, and nothing is lost.</li><li>Good-news reminders stay off unless a grown-up turns them on: at most one a day, never at night, only happy news like “Your egg hatched!”</li><li>Big text, music and sound volume, reduced motion, relaxed timing and vibration settings.</li><li>Plays in English, Spanish and Brazilian Portuguese.</li></ul></div><div class="gp-promise"><h3>Privacy promises</h3><ul class="gp-checks"><li>No ads, no accounts, no data collection. Your garden is saved only on your device.</li><li>No chat: friends playing together send preset emotes, never typed messages.</li><li>Plays offline. Play Together links two phones on your home Wi-Fi only, never over the internet.</li><li>Pet names that come from other players pass a name filter on your device.</li><li>Nothing is for sale in the game. If that ever changes, purchases will sit behind a grown-up check.</li></ul></div></div>
+    <p class="gp-policy"><a href="/petbox/privacy/">Read the Petbox privacy policy</a></p>
+    <div class="gp-grownups__shots"><figure class="gp-media gp-media--half"><div class="pixel-frame gp-media__frame"><img src="/petbox/img/shots/en/15-grown-ups.png" width="640" height="360" alt="The Grown-ups settings page: playtime limit, bedtime and good-news reminders, all switched off" loading="lazy" decoding="async"></div><figcaption class="gp-cap">Settings &gt; Grown-ups: everything starts switched off</figcaption></figure><figure class="gp-media gp-media--half"><div class="pixel-frame gp-media__frame"><img src="/petbox/img/shots/en/16-bedtime.png" width="640" height="360" alt="The bedtime screen at night: See you tomorrow! That&#x27;s all the play for today. Your pets are snug and dreaming." loading="lazy" decoding="async"></div><figcaption class="gp-cap">Bedtime: the pets tuck in, nothing is lost</figcaption></figure></div>
+  </div>
+</section>
+
+<section class="section gp-soonbox" id="coming-soon" aria-labelledby="coming-soon-h" data-reveal>
+  <div class="wrap">
+    <div class="gp-soonbox__in pixel-frame">
+      <div class="gp-soonbox__pet" aria-hidden="true"><span class="gp-pet gp-pet--soon" style="--w:37;--h:31;--ay:27;--fx:53"><canvas class="sprite" data-sprite="petbox/hazel" data-seq="hammer*3,idle*2" data-tap="cheer" width="37" height="31" aria-hidden="true"></canvas></span></div>
+      <div class="gp-soonbox__text">
+        <h2 id="coming-soon-h">Coming soon</h2>
+        <p>Petbox is getting its last coat of paint in Hazel's workshop. It's coming to Android phones through Google Play, and the link will appear right here on the day it's out.</p>
+        <p class="gp-soonbox__small">There's no sign-up and no mailing list: just check back here.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section gp-press" id="press" aria-labelledby="press-h" data-reveal>
+  <div class="wrap gp-press__in">
+    <div>
+      <h2 id="press-h">Press &amp; contact</h2>
+      <p>Writing about Petbox or making a video? The <a href="/press/">press kit</a> has the fact sheet, logos and screenshots.</p>
+      <p>Questions, ideas or a kind word: <a href="mailto:support@boxunitedgames.com">support@boxunitedgames.com</a></p>
+    </div>
+    <ul class="gp-downloads"><li><a href="/petbox/media/petbox-cozy-v1.mp4" download>Trailer</a> <span class="muted">(MP4, 36 s, 2.0 MB)</span></li><li><a href="/petbox/media/petbox-trailer-v1.mp4" download>Gameplay trailer</a> <span class="muted">(MP4, 32 s, 1.9 MB)</span></li><li><a href="/petbox/media/petbox-short-v1.mp4" download>Vertical short trailer</a> <span class="muted">(MP4, 20 s, 1.6 MB)</span></li></ul>
+  </div>
+</section>
+</main>
+<footer class="site-foot"><div class="site-foot__in">
+  <span>&copy; 2026 Box United</span><a href="/privacy/">Privacy</a><a href="/press/">Press</a><a href="mailto:support@boxunitedgames.com">support@boxunitedgames.com</a><span>No cookies, no trackers.</span>
+  <p class="site-foot__extra gp-foot"><span class="gp-foot__langs"><a href="/petbox/" hreflang="en" lang="en" aria-current="page">English</a><a href="/petbox/es/" hreflang="es" lang="es">Español</a><a href="/petbox/pt-br/" hreflang="pt-BR" lang="pt-BR">Português</a></span><a href="/petbox/privacy/">Petbox privacy policy</a></p>
+</div></footer>
 </body>
 </html>

@@ -1,0 +1,42 @@
+/* Petbox game theme: layered on brand.css. Activate with <html data-game="petbox">.
+   A theme may ONLY set the slot tokens listed in docs/brand/BRAND.md "Game themes":
+   --accent --accent-ink --accent-soft --game-accent --game-accent-ink
+   --sky-1 --sky-3 --sky-2 --ground --ground-2 --game-wood --game-wood-lo --game-candy-1..5
+   (light here, dark below). Components, type and spacing stay the studio's. */
+[data-game="petbox"] {
+  --accent: #8fdc6e;          /* garden leaf; plum ink on it 9.1:1 */
+  --accent-ink: #2b2140;
+  --accent-soft: #e2f5d6;     /* ink on it 13.1:1 */
+  --game-accent: #8fdc6e;
+  --game-accent-ink: #2b2140;
+  --sky-1: #6fc3f0;           /* the in-game day sky, top */
+  --sky-3: #9ed8f6;           /* middle band; ink on it 9.8:1 */
+  --sky-2: #cdeefe;           /* ink on it 12.4:1 */
+  --ground: #8fdc6e;
+  --ground-2: #6fbf55;
+  --game-wood: #c8955a;       /* Hazel's toy chest */
+  --game-wood-lo: #8a5a30;
+  /* the PETBOX logo letters (decoration only, never text colours) */
+  --game-candy-1: #ff8fb5;
+  --game-candy-2: #ffd75e;
+  --game-candy-3: #8fdc6e;
+  --game-candy-4: #6fc3f0;
+  --game-candy-5: #b9a0ff;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"])[data-game="petbox"] {
+    --accent: #8fdc6e;        /* 10.7:1 on the night bg */
+    --accent-ink: #2b2140;
+    --accent-soft: #24361f;   /* light ink on it 11.4:1 */
+    --game-accent: #8fdc6e;
+    --sky-1: #1d2a52;         /* garden night */
+    --sky-3: #1d2549;
+    --sky-2: #1c2040;
+    --ground: #3f6e37;
+    --ground-2: #2f5529;
+  }
+}
+:root[data-theme="dark"][data-game="petbox"] {
+  --accent: #8fdc6e; --accent-ink: #2b2140; --accent-soft: #24361f; --game-accent: #8fdc6e;
+  --sky-1: #1d2a52; --sky-3: #1d2549; --sky-2: #1c2040; --ground: #3f6e37; --ground-2: #2f5529;
+}

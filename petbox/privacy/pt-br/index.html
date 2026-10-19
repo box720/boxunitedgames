@@ -1,40 +1,61 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-game="petbox">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Petbox - Política de Privacidade</title>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self'; media-src 'self'; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#6fc3f0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1d2a52" media="(prefers-color-scheme: dark)">
+<title>Política de privacidade do Petbox | Box United</title>
+<meta name="description" content="Como o Petbox cuida da sua privacidade: não coleta dados, não tem anúncios nem contas, e seu jardim fica no seu aparelho.">
 <link rel="canonical" href="https://boxunitedgames.com/petbox/privacy/pt-br/">
 <link rel="alternate" hreflang="en" href="https://boxunitedgames.com/petbox/privacy/">
 <link rel="alternate" hreflang="es" href="https://boxunitedgames.com/petbox/privacy/es/">
 <link rel="alternate" hreflang="pt-BR" href="https://boxunitedgames.com/petbox/privacy/pt-br/">
 <link rel="alternate" hreflang="x-default" href="https://boxunitedgames.com/petbox/privacy/">
-<style>
-  :root { --ink: #3b2a4a; --paper: #fff6e6; --pink: #ff8fb1; --sky: #e9f6ff; --muted: #6b5a7a; }
-  html { background: var(--sky); }
-  body { margin: 0; padding: 24px 16px 48px; color: var(--ink);
-         font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
-  main { max-width: 720px; margin: 0 auto; background: var(--paper); border: 3px solid var(--ink);
-         box-shadow: 6px 6px 0 var(--ink); padding: 24px 24px 32px; }
-  h1 { margin: 0 0 4px; font-size: 1.7em; line-height: 1.2; }
-  h2 { margin: 1.6em 0 0.4em; font-size: 1.15em; padding: 2px 8px; display: inline-block;
-       background: var(--pink); color: #fff; border: 2px solid var(--ink); }
-  .meta { color: var(--muted); font-size: 0.92em; margin: 0 0 16px; }
-  .short { background: #fff; border: 2px dashed var(--pink); padding: 12px 16px; }
-  code { background: #fff; border: 1px solid #e3d6c4; padding: 0 4px; border-radius: 3px;
-         overflow-wrap: anywhere; }
-  ul { padding-left: 1.2em; }
-  li { margin: 0.3em 0; }
-  .lang { max-width: 720px; margin: 0 auto 12px; text-align: right; font-size: 0.92em; }
-  .lang a { color: var(--ink); }
-  footer { max-width: 720px; margin: 16px auto 0; color: var(--muted); font-size: 0.85em; text-align: center; }
-  footer a { color: inherit; }
-</style>
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/brand/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Box United">
+<meta property="og:title" content="Política de privacidade do Petbox">
+<meta property="og:description" content="Como o Petbox cuida da sua privacidade: não coleta dados, não tem anúncios nem contas, e seu jardim fica no seu aparelho.">
+<meta property="og:url" content="https://boxunitedgames.com/petbox/privacy/pt-br/">
+<meta property="og:image" content="https://boxunitedgames.com/petbox/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="O logo do Petbox, uma caixa de brinquedos de madeira com a Hazel, a toupeira que faz brinquedos, espiando, e quatro pets em pixel na grama">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="es_LA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Política de privacidade do Petbox">
+<meta name="twitter:description" content="Como o Petbox cuida da sua privacidade: não coleta dados, não tem anúncios nem contas, e seu jardim fica no seu aparelho.">
+<meta name="twitter:image" content="https://boxunitedgames.com/petbox/img/og.png">
+<meta name="twitter:image:alt" content="O logo do Petbox, uma caixa de brinquedos de madeira com a Hazel, a toupeira que faz brinquedos, espiando, e quatro pets em pixel na grama">
+<link rel="preload" href="/assets/fonts/box-pixel-v1.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/brand.css">
+<link rel="stylesheet" href="/assets/css/themes/petbox.css">
+<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/assets/css/game.css">
 </head>
 <body>
-<nav class="lang" aria-label="Idioma"><a href="../" hreflang="en" lang="en">English</a> · <a href="../es/" hreflang="es" lang="es">Español</a> · <strong>Português (Brasil)</strong></nav>
-<main>
-  <h1>Petbox - Política de Privacidade</h1>
+<a class="skip" href="#main">Pular para o conteúdo</a>
+<header class="site-head"><div class="site-head__in">
+  <a class="brand" href="/"><img src="/assets/brand/logo.svg" alt="" width="32" height="32"><span>Box United</span></a>
+  <nav class="site-nav" aria-label="Principal"><a href="/#games">Jogos</a><a href="/#about">Sobre</a><a href="/press/">Imprensa</a><a href="/#contact">Contato</a></nav>
+</div></header>
+<main id="main">
+<div class="gp-policy-band"><div class="wrap gp-policy-band__in">
+  <nav class="gp-langs" aria-label="Idioma"><a href="/petbox/privacy/" hreflang="en" lang="en">English</a><a href="/petbox/privacy/es/" hreflang="es" lang="es">Español</a><a href="/petbox/privacy/pt-br/" hreflang="pt-BR" lang="pt-BR" aria-current="page">Português</a></nav>
+  <a class="gp-policy-logo" href="/petbox/pt-br/"><img src="/petbox/img/logo.png" width="272" height="122" alt="Petbox"></a>
+</div></div>
+<article class="wrap gp-policy">
+  <div class="prose">
+  <h1>Política de privacidade do Petbox</h1>
+
   <p class="meta">Data de vigência: 18 de outubro de 2026<br>
   Desenvolvedor: Box United<br>
   Contato: <a href="mailto:support@boxunitedgames.com">support@boxunitedgames.com</a></p>
@@ -147,7 +168,7 @@
       da tela encerra a sessão.</li>
   </ul>
 
-  <h2>Usado no seu aparelho, nunca coletado</h2>
+  <h2>O que o jogo usa no seu aparelho sem coletar</h2>
   <ul>
     <li><strong>Relógio e fuso horário:</strong> para o dia e a noite, o clima, os desejos diários
       e o festival de sábado. Lidos no aparelho e nunca enviados.</li>
@@ -156,7 +177,7 @@
     <li><strong>Lembretes de boas notícias</strong> (a permissão POST_NOTIFICATIONS):
       opcionais e <strong>desligados, a menos que um adulto os ative</strong> em Ajustes (depois
       da verificação para adultos; o Android então pede a permissão). São notificações locais
-      mostradas pelo próprio celular, no máximo uma por dia e nunca à noite, só com notícias
+      mostradas pelo próprio celular, no máximo uma por dia e nunca à noite (20:00-08:00), só com notícias
       felizes como "Seu ovo nasceu!". Nenhum dado sai do aparelho, nenhum servidor ou serviço
       de notificações push é usado, e eles podem ser desligados a qualquer momento no jogo ou
       nas configurações do celular.</li>
@@ -197,7 +218,13 @@
 
   <h2>Contato</h2>
   <p>Dúvidas sobre esta política: <a href="mailto:support@boxunitedgames.com">support@boxunitedgames.com</a></p>
+  </div>
+  <p class="gp-policy__back"><a href="/petbox/pt-br/">&larr; Voltar ao Petbox</a></p>
+</article>
 </main>
-<footer><a href="../../pt-br/">Petbox</a> da <a href="../../../">Box United</a> - um pequeno jardim de pets, feito à mão e offline.</footer>
+<footer class="site-foot"><div class="site-foot__in">
+  <span>&copy; 2026 Box United</span><a href="/privacy/">Privacidade</a><a href="/press/">Imprensa</a><a href="mailto:support@boxunitedgames.com">support@boxunitedgames.com</a><span>Sem cookies, sem rastreadores.</span>
+  <p class="site-foot__extra gp-foot"><span class="gp-foot__langs"><a href="/petbox/privacy/" hreflang="en" lang="en">English</a><a href="/petbox/privacy/es/" hreflang="es" lang="es">Español</a><a href="/petbox/privacy/pt-br/" hreflang="pt-BR" lang="pt-BR" aria-current="page">Português</a></span><a href="/petbox/pt-br/">Petbox</a></p>
+</div></footer>
 </body>
 </html>

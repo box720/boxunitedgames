@@ -1,0 +1,87 @@
+/* Box United site layout (W2): header, nav, footer, sections, press, privacy, 404 - on every page.
+   Home-only styles (hero scene, games block, about, contact) live in a <style> in /index.html.
+   Loaded after brand.css (W1). Colours, type, spacing and motion come from brand tokens; no colour is
+   hard-coded here, and Box Pixel text only uses the --pix-* sizes (whole font pixels). */
+
+/* ---------- page frame ---------- */
+body { min-height: 100vh; display: flex; flex-direction: column }
+main { flex: 1 0 auto; display: block }
+.prose a, .site-foot a, .lede a, .about__body a, .contact a:not(.btn), .press-page a:not(.btn), .lost a:not(.btn) { text-decoration: underline }
+.skip { position: absolute; left: var(--sp-2); top: -100px; z-index: 50; padding: var(--sp-3) var(--sp-4); background: var(--surface);
+  color: var(--ink); border: var(--px) solid var(--line); font-weight: 800; text-decoration: underline }
+.skip:focus { top: var(--sp-2) }
+
+/* ---------- header + nav ---------- */
+.site-head { position: relative; z-index: 5; background: var(--bg); border-bottom: var(--px) solid var(--line) }
+.site-head__in { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 var(--sp-5);
+  max-width: var(--wrap); margin: 0 auto; padding: 0 max(var(--sp-4), env(safe-area-inset-right)) 0 max(var(--sp-4), env(safe-area-inset-left)) }
+.brand { display: inline-flex; align-items: center; gap: var(--sp-3); min-height: 56px; color: var(--ink); text-decoration: none;
+  font: 400 var(--pix-2x)/var(--lh-pixel) var(--font-display); font-synthesis: none }
+.brand img { width: 32px; height: 32px; image-rendering: pixelated; flex: none }
+@media (min-width: 480px) { .brand { font-size: var(--pix-3x) } }
+.site-nav { display: flex; flex-wrap: wrap; gap: 0 var(--sp-1); margin: 0 calc(-1 * var(--sp-3)) }
+.site-nav a { display: inline-flex; align-items: center; min-height: 48px; min-width: 44px; padding: 0 var(--sp-3); color: var(--ink);
+  text-decoration: none; font-weight: 800; border-bottom: var(--px) solid transparent }
+.site-nav a:hover { text-decoration: underline }
+.site-nav a[aria-current="page"] { border-bottom-color: var(--accent-strong) }
+@media (max-width: 479px) {
+  .site-nav { width: calc(100% + 2 * var(--sp-3)); justify-content: space-between }
+}
+
+/* ---------- footer ---------- */
+.site-foot { flex: none; margin-top: var(--sp-7); border-top: var(--px) solid var(--line); background: var(--surface-2); color: var(--ink-soft) }
+.site-foot__in { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-1) var(--sp-5); max-width: var(--wrap); margin: 0 auto;
+  padding: var(--sp-4) max(var(--sp-4), env(safe-area-inset-right)) max(var(--sp-4), env(safe-area-inset-bottom)) max(var(--sp-4), env(safe-area-inset-left));
+  font-size: var(--fs--1) }
+.site-foot a { color: var(--ink); display: inline-block; padding: 10px 0 }
+.site-foot__extra { width: 100%; margin: 0 }
+
+/* ---------- sections ---------- */
+.section__head { margin-bottom: var(--sp-5) }
+.lede { font-size: var(--fs-1); max-width: 38em }
+.section + .section { padding-top: 0 }
+
+/* ---------- inner pages ---------- */
+.page-head { padding-top: var(--sp-7) }
+.page-head .lede { margin-top: var(--sp-4) }
+.press-page section { padding-top: var(--sp-7) }
+.press-page h3 { margin: var(--sp-6) 0 var(--sp-3); font-size: var(--fs-1) }
+.press-game__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--sp-5) var(--sp-7); margin-top: var(--sp-5) }
+@media (min-width: 960px) { .press-game__grid { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr) } }
+.press-game__about p + p { margin-top: var(--sp-4) }
+.facts.card { margin: var(--px); padding: 0 }
+.facts div { display: grid; grid-template-columns: 7.5em minmax(0, 1fr); gap: var(--sp-3); padding: var(--sp-2) var(--sp-4) }
+.facts div + div { border-top: 2px solid var(--surface-2) }
+.facts dt { font-weight: 800 }
+.facts dd { margin: 0; overflow-wrap: anywhere }
+.press-features { padding-left: 1.2em; max-width: 46em }
+.press-features li + li { margin-top: var(--sp-1) }
+.press-shots, .press-media-list { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--sp-5); margin: 0; padding: 0; list-style: none }
+@media (min-width: 720px) {
+  .press-shots { grid-template-columns: repeat(auto-fill, 326px) }  /* 320 px images = the game frame at 1x */
+  .press-media-list { grid-template-columns: repeat(auto-fill, minmax(326px, 1fr)) }
+}
+.press-shots li, .press-media { padding: var(--px) }
+.press-shots a, .press-media a { display: block; color: var(--ink) }
+.press-shots img, .press-media img { width: 100%; height: auto; display: block; image-rendering: pixelated; background: var(--surface-2); max-width: 320px;
+  box-shadow: 0 0 0 var(--px) var(--line) }
+.press-shot__meta, .press-media__label { display: block; padding-top: var(--sp-2); font-size: var(--fs--1) }
+.press-media img { image-rendering: auto; max-width: 100% }
+.press-media--tall { grid-column: 1 / -1 }
+.press-media--tall img { max-width: 180px }
+.press-downloads { padding-left: 1.2em }
+.press-downloads a { display: inline-block; padding: 10px 0 }
+.facts dd a { display: inline-block; padding: 10px 0; margin: -10px 0 } /* 44 px tap rows, same layout */
+
+.prose { max-width: 40em; font-size: var(--fs-1) }
+.page-head + .prose { margin-top: var(--sp-5) }
+.prose p + p { margin-top: var(--sp-4) }
+.prose h2 { margin: var(--sp-6) 0 var(--sp-3) }
+.prose ul { padding-left: 1.2em }
+.prose li a { display: inline-block; padding: var(--sp-1) 0 }
+
+.lost { text-align: center; padding: var(--sp-8) 0 var(--sp-6) }
+.lost__art { width: 222px; height: 144px; image-rendering: pixelated } /* 74x48 art at 3x */
+.lost h1 { margin: var(--sp-4) 0 var(--sp-3) }
+.lost .row { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--sp-4); margin-top: var(--sp-5) }
+

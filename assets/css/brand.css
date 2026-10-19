@@ -1,0 +1,264 @@
+/* Box United brand system v1 (docs/brand/BRAND.md). Load first on every page, then the
+   page CSS; a game page adds /assets/css/themes/<game>.css + <html data-game="<game>">.
+   Layers: 1 fonts, 2 tokens (light, dark), 3 base, 4 layout, 5 type, 6 components, 7 motion. */
+
+/* 1 fonts: self-hosted, two files, no third-party requests ---------------------------- */
+@font-face {
+  font-family: "Box Pixel";
+  src: url("/assets/fonts/box-pixel-v1.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nunito";
+  src: url("/assets/fonts/nunito-latin-v2.woff2") format("woff2"); /* variable 400-800, default 400 */
+  font-weight: 400 800;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* 2 tokens --------------------------------------------------------------------------- */
+:root {
+  color-scheme: light dark;
+  /* brand raw (the toy box: wood, ribbon, plum ink) */
+  --bu-plum: #2b2140;
+  --bu-wood: #c98d52;
+  --bu-wood-hi: #e8b77d;
+  --bu-wood-lo: #8f5f33;
+  --bu-bow: #e8457f;
+  --bu-bow-hi: #ff9ec2;
+  --bu-bow-lo: #b5174f;
+  --bu-blush: #ffdbe7;
+
+  /* semantic colours (light): pages use these, never the raw ones */
+  --bg: #f6f0e4;          /* warm paper */
+  --surface: #fffdf8;     /* cards, panels */
+  --surface-2: #efe4d0;   /* sunken / alternate band */
+  --ink: #2b2140;         /* text 13.3:1 on bg */
+  --ink-soft: #5f5470;    /* secondary text 6.2:1 on bg, 5.6:1 on surface-2 */
+  --line: #2b2140;        /* dividers, ghost-button borders */
+  --edge: #2b2140;        /* pixel outline of filled components */
+  --shadow: #2b2140;      /* hard offset shadow */
+  --accent: #ff7aa8;      /* the one action colour (candy pink); ink on it 6.2:1 */
+  --accent-ink: #2b2140;
+  --accent-soft: #ffdbe7;
+  --accent-strong: #c21d5c; /* pink as text/icons on light: 5.1:1 */
+  --link: #b5174f;        /* 5.8:1 on bg */
+  --focus: #c21d5c;
+
+  /* game theme slots (a game theme overrides these; studio defaults below) */
+  --sky-1: #fde7ee;       /* hero backdrop: top band */
+  --sky-3: #faebe9;       /* middle band (hard stops, no gradients) */
+  --sky-2: #f6f0e4;       /* band at the horizon */
+  --ground: #7fbf6a;
+  --ground-2: #5a9e4b;
+  --game-accent: var(--accent);
+  --game-accent-ink: var(--accent-ink);
+
+  /* type */
+  --font-display: "Box Pixel", "Nunito", system-ui, sans-serif;
+  --font-body: "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  /* Box Pixel sizes: whole multiples of its 8-unit em ONLY (1 font pixel = 2/3/4/6/8 CSS px) */
+  --pix-2x: 1rem;     /* 16px eyebrow / label */
+  --pix-3x: 1.5rem;   /* 24px */
+  --pix-4x: 2rem;     /* 32px h2, mobile h1 */
+  --pix-5x: 2.5rem;   /* 40px */
+  --pix-6x: 3rem;     /* 48px desktop h1 */
+  --pix-8x: 4rem;     /* 64px hero wordmark */
+  /* Nunito scale */
+  --fs--1: 0.9375rem; /* 15px captions, footer */
+  --fs-0: 1.0625rem;  /* 17px body */
+  --fs-1: 1.25rem;    /* 20px lead */
+  --fs-2: 1.5rem;     /* 24px h3 */
+  --fs-3: var(--pix-3x);
+  --fs-4: var(--pix-4x);
+  --fs-5: var(--pix-6x);
+  --lh-body: 1.6;
+  --lh-pixel: 1.375;  /* = 11 font pixels: whole pixels, and a free row between lines for accent marks */
+
+  /* space: 4px grid */
+  --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 24px;
+  --sp-6: 32px; --sp-7: 48px; --sp-8: 64px; --sp-9: 96px;
+  --px: 3px;          /* one "UI pixel": outline width and notch size */
+  --wrap: 1040px;
+  --wrap-text: 680px;
+
+  /* motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in: cubic-bezier(0.55, 0, 1, 0.45);
+  --ease-pop: cubic-bezier(0.34, 1.56, 0.64, 1); /* UI chrome only, never on pixel art */
+  --dur-1: 120ms;  /* press, hover */
+  --dur-2: 200ms;  /* small UI changes */
+  --dur-3: 320ms;  /* reveals */
+  --dur-4: 600ms;  /* hero beats */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1b1524;        /* warm night plum, not black */
+    --surface: #251d31;
+    --surface-2: #2f263d;
+    --ink: #f6efe6;
+    --ink-soft: #c3b8d0;
+    --line: #8a7ba3;      /* 4.6:1 on bg */
+    --edge: #8a7ba3;      /* outlines stay visible at night (4.6:1) */
+    --shadow: #0d0912;
+    --accent: #ff7aa8;    /* 7.3:1 on bg */
+    --accent-ink: #2b2140;
+    --accent-soft: #47243a;
+    --accent-strong: #ff7aa8;
+    --link: #ff9ec2;      /* 9.3:1 on bg */
+    --focus: #ffd166;
+    --sky-1: #1f2b55;     /* night blue, so plum outlines still read; ink 12.0:1 */
+    --sky-3: #1c2549;
+    --sky-2: #18203f;     /* ink 14.0:1 */
+    --ground: #4f7f44;
+    --ground-2: #3b6334;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1b1524; --surface: #251d31; --surface-2: #2f263d; --ink: #f6efe6; --ink-soft: #c3b8d0;
+  --line: #8a7ba3; --edge: #8a7ba3; --shadow: #0d0912; --accent: #ff7aa8; --accent-ink: #2b2140;
+  --accent-soft: #47243a; --accent-strong: #ff7aa8; --link: #ff9ec2; --focus: #ffd166;
+  --sky-1: #1f2b55; --sky-3: #1c2549; --sky-2: #18203f; --ground: #4f7f44; --ground-2: #3b6334;
+}
+
+/* 3 base ----------------------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { background: var(--bg); -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 var(--fs-0)/var(--lh-body) var(--font-body);
+  overflow-wrap: break-word;
+}
+img, svg, video, canvas { max-width: 100%; }
+img, video { height: auto; }
+a { color: var(--link); text-underline-offset: 0.18em; text-decoration-thickness: 0.08em; }
+a:hover { text-decoration-thickness: 0.14em; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+::selection { background: var(--accent); color: var(--accent-ink); }
+.sr-only {
+  position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.skip-link { position: absolute; left: var(--sp-4); top: -100px; z-index: 100; padding: var(--sp-2) var(--sp-4);
+  background: var(--surface); color: var(--ink); border: var(--px) solid var(--edge); }
+.skip-link:focus { top: var(--sp-4); }
+.pixelated, canvas.sprite { image-rendering: crisp-edges; image-rendering: pixelated; }
+canvas.sprite { display: block; }
+
+/* 4 layout --------------------------------------------------------------------------- */
+@media (min-width: 1360px) { :root { --wrap: 1200px; } } /* room for the 4x home hero + 64 px wordmark */
+.wrap { width: 100%; max-width: var(--wrap); margin-inline: auto; padding-inline: max(var(--sp-4), env(safe-area-inset-left)) max(var(--sp-4), env(safe-area-inset-right)); }
+.wrap--text { max-width: var(--wrap-text); }
+.section { padding-block: var(--sp-7); }
+@media (min-width: 768px) { .section { padding-block: var(--sp-8); } }
+.section--alt { background: var(--surface-2); }
+.stack > * + * { margin-top: var(--stack, var(--sp-4)); }
+.cluster { display: flex; flex-wrap: wrap; gap: var(--cluster, var(--sp-3)); align-items: center; }
+.grid-auto { display: grid; gap: var(--sp-5); grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--min, 260px)), 1fr)); }
+
+/* 5 type ----------------------------------------------------------------------------- */
+h1, h2, h3, h4 { margin: 0; line-height: 1.2; color: var(--ink); }
+p { margin: 0; }
+.display, h1, h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: var(--lh-pixel);
+  letter-spacing: 0;
+  font-synthesis: none;
+  font-kerning: none;
+}
+h1, .display--1 { font-size: var(--pix-4x); }
+h2, .display--2 { font-size: var(--pix-3x); }
+@media (min-width: 768px) {
+  h1, .display--1 { font-size: var(--pix-6x); }
+  h2, .display--2 { font-size: var(--pix-4x); }
+}
+h3 { font-size: var(--fs-2); font-weight: 800; }
+.lead { font-size: var(--fs-1); color: var(--ink-soft); }
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: var(--pix-2x);
+  line-height: var(--lh-pixel);
+  color: var(--ink-soft);
+  font-synthesis: none;
+}
+.small, small { font-size: var(--fs--1); }
+.muted { color: var(--ink-soft); }
+
+/* 6 components ----------------------------------------------------------------------- */
+/* Pixel outline: four flat shadows draw a --px border with notched corners, then a
+   stepped offset shadow. Use on buttons and cards only (not every box). */
+.pixel-frame, .btn, .card {
+  --o: var(--edge);
+  --s: var(--shadow);
+  box-shadow:
+    0 calc(var(--px) * -1) 0 0 var(--o), 0 var(--px) 0 0 var(--o),
+    calc(var(--px) * -1) 0 0 0 var(--o), var(--px) 0 0 0 var(--o),
+    var(--lift-x, calc(var(--px) * 2)) var(--lift-y, calc(var(--px) * 3)) 0 0 var(--s),
+    var(--lift-y, calc(var(--px) * 3)) var(--lift-x, calc(var(--px) * 2)) 0 0 var(--s);
+  margin: var(--px);
+}
+.pixel-frame { background: var(--surface); }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--sp-2);
+  min-height: 48px; padding: var(--sp-2) var(--sp-5);
+  font: 800 var(--fs-0)/1.2 var(--font-body);
+  color: var(--accent-ink); background: var(--accent);
+  border: 0; border-radius: 0; text-decoration: none; cursor: pointer;
+  transition: transform var(--dur-1) var(--ease-out), box-shadow var(--dur-1) var(--ease-out);
+}
+.btn:hover { transform: translate(-1px, -2px); --lift-x: calc(var(--px) * 3); --lift-y: calc(var(--px) * 4); }
+.btn:active { transform: translate(var(--px), var(--px)); --lift-x: var(--px); --lift-y: var(--px); }
+.btn:focus-visible { outline-offset: calc(var(--px) * 3); }
+.btn--primary { background: var(--game-accent); color: var(--game-accent-ink); }
+.btn--ghost { background: transparent; color: var(--ink); --o: var(--line); --lift-x: 0px; --lift-y: 0px; }
+.btn--ghost:hover { background: var(--accent-soft); --lift-x: 0px; --lift-y: 0px; }
+.btn[aria-disabled="true"], .btn:disabled { cursor: default; opacity: 0.6; transform: none; }
+
+.card {
+  display: block; padding: var(--sp-5);
+  background: var(--surface); color: var(--ink);
+}
+a.card, .card--link { text-decoration: none; transition: transform var(--dur-1) var(--ease-out); }
+a.card:hover, .card--link:hover { transform: translate(-1px, -2px); --lift-x: calc(var(--px) * 3); --lift-y: calc(var(--px) * 4); }
+a.card:focus-visible, .card--link:focus-visible { outline-offset: calc(var(--px) * 3); }
+
+/* Tags: flat, notched-corner stickers (never outlined boxes: those read as inputs).
+   .badge = status sticker in the pixel face (plum on light, cream on dark); .chip = fact tag. */
+.badge, .chip {
+  clip-path: polygon(2px 0, calc(100% - 2px) 0, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0 calc(100% - 2px), 0 2px);
+}
+.badge {
+  display: inline-block; padding: 4px var(--sp-2) 2px;
+  font: 400 var(--pix-2x)/var(--lh-pixel) var(--font-display);
+  color: var(--bg); background: var(--ink);
+}
+.chip {
+  display: inline-flex; align-items: center; gap: var(--sp-1); padding: 3px var(--sp-2);
+  font-size: var(--fs--1); font-weight: 700; color: var(--ink);
+  background: var(--surface-2);
+}
+
+/* 7 motion --------------------------------------------------------------------------- */
+/* Reveal recipe: site.js adds .js on <html> and .is-in when an element scrolls in. */
+.js .reveal:not(.is-in) { opacity: 0; transform: translateY(var(--sp-3)); }
+.js .reveal { transition: opacity var(--dur-3) var(--ease-out), transform var(--dur-3) var(--ease-out); transition-delay: var(--delay, 0ms); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+  .js .reveal:not(.is-in) { opacity: 1; transform: none; }
+  .btn:hover, a.card:hover, .card--link:hover { transform: none; }
+}
