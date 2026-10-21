@@ -19,14 +19,20 @@ main { flex: 1 0 auto; display: block }
   font: 400 var(--pix-2x)/var(--lh-pixel) var(--font-display); font-synthesis: none }
 .brand img { width: 32px; height: 32px; image-rendering: pixelated; flex: none }
 @media (min-width: 480px) { .brand { font-size: var(--pix-3x) } }
-.site-nav { display: flex; flex-wrap: wrap; gap: 0 var(--sp-1); margin: 0 calc(-1 * var(--sp-3)) }
-.site-nav a { display: inline-flex; align-items: center; min-height: 48px; min-width: 44px; padding: 0 var(--sp-3); color: var(--ink);
-  text-decoration: none; font-weight: 800; border-bottom: var(--px) solid transparent }
+/* The header's row count is fixed per breakpoint (never decided by font metrics, so the web-font swap
+   can't re-wrap it): below 720 px the nav is always its own full-width row of 4 columns; from 720 px
+   brand and nav always share one row. */
+.site-nav { display: flex; gap: 0 var(--sp-1); margin: 0 calc(-1 * var(--sp-3)) }
+.site-nav a { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; min-width: 44px; padding: 0 var(--sp-3);
+  color: var(--ink); text-decoration: none; font-weight: 800; white-space: nowrap; border-bottom: var(--px) solid transparent }
 .site-nav a:hover { text-decoration: underline }
 .site-nav a[aria-current="page"] { border-bottom-color: var(--accent-strong) }
-@media (max-width: 479px) {
-  .site-nav { width: calc(100% + 2 * var(--sp-3)); justify-content: space-between }
+@media (max-width: 719px) {
+  .site-nav { flex: 0 0 calc(100% + 2 * var(--sp-3)); display: grid; grid-template-columns: repeat(4, auto); justify-content: space-between; gap: 0 }
 }
+@media (min-width: 480px) and (max-width: 719px) { .site-nav { justify-content: start; gap: 0 var(--sp-1) } }
+@media (max-width: 399px) { .site-nav a { padding: 0 var(--sp-2) } }
+@media (min-width: 720px) { .site-head__in { flex-wrap: nowrap } }
 
 /* ---------- footer ---------- */
 .site-foot { flex: none; margin-top: var(--sp-7); border-top: var(--px) solid var(--line); background: var(--surface-2); color: var(--ink-soft) }
