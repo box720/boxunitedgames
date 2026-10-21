@@ -186,13 +186,8 @@
 
 /* ---------- press ---------- */
 .gp-press { padding-top: 0 }
-.gp-press__in { display: grid; gap: var(--sp-4) var(--sp-7); align-items: start }
-@media (min-width: 840px) { .gp-press__in { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) } }
+.gp-press__in { display: grid; gap: var(--sp-4) var(--sp-7); align-items: start; max-width: 46em }
 .gp-press p { margin-top: var(--sp-3) }
-.gp-downloads { margin: 0; padding-left: 1.2em }
-@media (min-width: 840px) { .gp-downloads { margin-top: 44px } }
-.gp-downloads li { margin: 2px 0 }
-.gp-downloads a { display: inline-block; padding: 8px 0 }
 
 /* ---------- footer extra line ---------- */
 .gp-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 0 var(--sp-5) }

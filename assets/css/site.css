@@ -68,7 +68,13 @@ main { flex: 1 0 auto; display: block }
   .press-media-list { grid-template-columns: repeat(auto-fill, minmax(326px, 1fr)) }
 }
 .press-shots li, .press-media { padding: var(--px) }
-.press-shots a, .press-media a { display: block; color: var(--ink) }
+.press-shots a { display: block; color: var(--ink) }
+.press-media video { display: block; width: 100%; height: auto; background: var(--surface-2); box-shadow: 0 0 0 var(--px) var(--line) }
+.press-media--tall video { max-width: 180px }
+.press-media__label { margin: var(--sp-2) 0 0 }
+.press-media__links { margin: 0; font-size: var(--fs--1) }
+.press-media__links a { display: inline-block; padding: 10px 0 }
+.press-shot__cap { display: block; padding-top: var(--sp-2); font-size: var(--fs--1) }
 .press-shots img, .press-media img { width: 100%; height: auto; display: block; image-rendering: pixelated; background: var(--surface-2); max-width: 320px;
   box-shadow: 0 0 0 var(--px) var(--line) }
 .press-shot__meta, .press-media__label { display: block; padding-top: var(--sp-2); font-size: var(--fs--1) }
