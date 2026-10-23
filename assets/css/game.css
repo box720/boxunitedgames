@@ -78,8 +78,8 @@
 .gp-video { position: relative; line-height: 0; background: #000 }
 .gp-video video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #000 }
 .gp-video__play {
-  position: absolute; left: 50%; top: 50%; translate: -50% -50%;
-  display: grid; place-items: center; width: 68px; height: 68px; padding: 0; border: 0; cursor: pointer;
+  position: absolute; right: var(--sp-3); top: var(--sp-3); /* top-right corner: sky on every poster, the art stays clear */
+  display: grid; place-items: center; width: 56px; height: 56px; padding: 0; border: 0; cursor: pointer;
   color: var(--ink); background: var(--surface);
   box-shadow: 0 -3px 0 var(--edge), 0 3px 0 var(--edge), -3px 0 0 var(--edge), 3px 0 0 var(--edge), 6px 9px 0 var(--shadow) }
 .gp-video__play svg { width: 24px; height: 24px; fill: currentColor; shape-rendering: crispEdges; margin-left: 4px }
