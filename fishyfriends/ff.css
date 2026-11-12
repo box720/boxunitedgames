@@ -1,6 +1,8 @@
 /* Fishy Friends page: a few layout rules on top of brand.css + site.css. */
 :root { --game-accent: #1f8fbf; --game-accent-ink: #ffffff; }
 .ff-px { image-rendering: pixelated; width: 100%; height: auto; display: block; border-radius: 6px; background: #0a1930; }
+.ff-band { background: linear-gradient(180deg, #0a1930 0%, #0f3a5a 70%, #1a5f73 100%); color: #f2f8ff; border-bottom: var(--px, 2px) solid var(--line); }
+.ff-band .ff-hero__soon span:not(.badge) { color: #cfe6f5; font-weight: 700; }
 .ff-hero { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--sp-5, 24px); padding-block: var(--sp-6, 32px) var(--sp-5, 24px); }
 .ff-hero__title { display: flex; align-items: center; gap: 14px; margin: 0; font-family: var(--font-display); font-size: clamp(26px, 7vw, 44px); line-height: 1.1; overflow-wrap: anywhere; }
 .ff-hero__title img { width: clamp(48px, 12vw, 72px); height: auto; image-rendering: pixelated; flex: none; }

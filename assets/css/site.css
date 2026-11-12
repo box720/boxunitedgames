@@ -97,3 +97,18 @@ main { flex: 1 0 auto; display: block }
 .lost h1 { margin: var(--sp-4) 0 var(--sp-3) }
 .lost .row { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--sp-4); margin-top: var(--sp-5) }
 
+
+/* Footer games row + "More from Box United" cross-link on game pages */
+.site-foot__games { width: 100%; margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0 var(--sp-4) }
+.site-foot__games > span { font-weight: 800; color: var(--ink) }
+.more-games h2 { margin-bottom: var(--sp-4) }
+.more-game { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--sp-4); align-items: center; padding: var(--sp-4); color: var(--ink); max-width: 760px }
+.more-game__art { width: 100%; height: auto; image-rendering: pixelated; display: block }
+.more-game__body { display: grid; gap: var(--sp-2); justify-items: start }
+.more-game__name { font-family: var(--font-display); font-size: var(--fs-2); line-height: 1.1 }
+@media (min-width: 640px) { .more-game { grid-template-columns: 280px minmax(0, 1fr) } }
+.press-toc { display: flex; flex-wrap: wrap; gap: var(--sp-2) var(--sp-3); margin-top: var(--sp-4) }
+.press-page .press-toc a { padding: 6px 12px; border: var(--px) solid var(--line); border-radius: 999px; text-decoration: none; color: var(--ink); font-weight: 700 }
+.press-page .press-toc a:hover { background: var(--accent-soft) }
+.press-page section[id], .press-page h2[id] { scroll-margin-top: 16px }
+.gp-press + .more-games { padding-top: 0 }
